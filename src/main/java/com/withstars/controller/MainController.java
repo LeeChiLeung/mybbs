@@ -6,6 +6,8 @@ import com.withstars.service.impl.TabServiceImpl;
 import com.withstars.service.impl.TopicServiceImpl;
 import com.withstars.service.impl.UserServiceImpl;
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +32,8 @@ import java.util.Map;
 @Controller
 public class MainController {
 
+	private static Logger logger = LoggerFactory.getLogger(MainController.class);
+	
     @Autowired
     public TopicServiceImpl topicService;
     @Autowired
@@ -79,14 +83,14 @@ public class MainController {
         String data = request.getQueryString();
         if(data!=null) {
             data = URLDecoder.decode(data, "UTF-8");
-            System.out.println(data);
+            logger.info(data);
         }
         Map requestMap = request.getParameterMap();
         String name = request.getParameter("name");
         
         String string=IOUtils.toString(requestDate,"UTF-8");
 
-        System.out.println(string);
+        logger.info(string);
 
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("result","success");
