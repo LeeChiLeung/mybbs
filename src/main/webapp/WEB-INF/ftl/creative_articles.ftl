@@ -3,9 +3,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <script src="/js/jquery-3.2.1.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <link href="/mybbs/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/mybbs/js/jquery-3.2.1.js"></script>
+    <script src="/mybbs/js/bootstrap.min.js"></script>
     <title>创作新主题 › Genesis </title>
 </head>
 <body>

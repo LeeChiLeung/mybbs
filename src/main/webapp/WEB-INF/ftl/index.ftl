@@ -5,14 +5,14 @@
     <meta name="Content-Type"  content="text/html;charset=utf-8">
     <meta name="keywords" content="Genesis,论坛,社区,程序员">
     <title>Genesis - 一个分享创造的开发者社区  </title>
-    <#--<%--<link href="static/css/bootstrap.min.css" rel="stylesheet">--%>-->
+    <link href="/mybbs/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+   <!--  <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"> -->
 
-    <#--<%--<script src="static/js/jquery-3.2.1.js"></script>--%>-->
-    <#--<%--<script src="static/js/bootstrap.min.js"></script>--%>-->
-    <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="/mybbs/js/jquery-3.2.1.js"></script>
+   <script src="/mybbs/js/bootstrap.min.js"></script>
+   <!--  <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
     <style>
         li {list-style-type:none;}
         html, body {

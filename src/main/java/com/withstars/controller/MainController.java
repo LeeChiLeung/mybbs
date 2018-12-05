@@ -63,16 +63,17 @@ public class MainController {
      * 进入注册页面.
      */
     @RequestMapping("/signup")
-    public ModelAndView signup(){
-        ModelAndView signupPage=new ModelAndView("signup");
+    public String signup(Model model){
+      
 
         //获取统计信息
         int topicsNum=topicService.getTopicsNum();
         int usersNum=userService.getUserCount();
 
-        signupPage.addObject("topicsNum",topicsNum);
-        signupPage.addObject("usersNum",usersNum);
-        return  signupPage;
+        model.addAttribute("topicsNum",topicsNum);
+        model.addAttribute("usersNum",usersNum);
+       
+        return  "signup";
     }
 
     @RequestMapping(value = "/slide")
@@ -94,6 +95,8 @@ public class MainController {
 
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("result","success");
+        map.put("max", 160);
+        map.put("min", 20);
         return map;
     }
 

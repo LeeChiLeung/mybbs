@@ -8,6 +8,8 @@ import com.withstars.service.impl.TopicServiceImpl;
 import com.withstars.service.impl.UserServiceImpl;
 import com.withstars.util.ProduceMD5;
 import eu.bitwalker.useragentutils.UserAgent;
+
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,7 +51,7 @@ public class UserController {
     /**
      * 用户注册
      */
-    @RequestMapping("/user/add/do")
+    @RequestMapping(value="/add/do",method=RequestMethod.POST)
     public String addUser(HttpServletRequest request){
         //新建User对象
         User user=new User();
@@ -60,7 +62,7 @@ public class UserController {
         //用户类型
         Byte type=new Byte("0");
         //密码加密处理
-        String password= ProduceMD5.getMD5(request.getParameter("password"));
+        String password=  DigestUtils.sha1Hex(request.getParameter("password"));
         //生成随机数，用于生成头像URL
         Random rand=new Random();
         int randomNum=rand.nextInt(10)+1;
@@ -78,7 +80,7 @@ public class UserController {
 
         boolean ifSucc=userService.addUser(user);
         System.out.print(ifSucc);
-        return "redirect:/";
+        return "redirect:/signin";
     }
 
     /**
@@ -92,7 +94,7 @@ public class UserController {
     @ResponseBody
     public Object signin(HttpServletRequest request,HttpSession session){
         //处理参数
-        String password=ProduceMD5.getMD5(request.getParameter("password"));
+        String password=DigestUtils.sha1Hex(request.getParameter("password"));
         String username=request.getParameter("username");
         //验证用户名密码
         int loginVerify=userService.login(username,password);

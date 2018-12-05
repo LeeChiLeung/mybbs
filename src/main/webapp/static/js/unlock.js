@@ -10,7 +10,7 @@
             progressColor: '#FFE97F',
             handleColor: '#fff',
             succColor: '#78D02E',
-            text: 'slide to unlock',
+            text: '请滑动到指定位置停留2秒以上解锁',
             succText: 'ok!',
             textColor: '#000',
             succTextColor: '#000',
@@ -19,7 +19,7 @@
             slideLengthId: 'slideLength',//用于保存滑动的距离的input id
             slideMillisecond: 2, //滑动秒数
             successFunc: function() {
-                alert('successfully unlock!');
+                alert('解锁成功!');
             }
         };
         this.options = $.extend({}, this.default, options);
@@ -33,14 +33,14 @@
             initStyle();
 
             function initDOM() {
-                var template = '<div class="slide-to-unlock-bg">' +
+                var template = '<div class="form-group">' +
                     '<span>' + options.text + '</span>' +
                     '</div>' +
                     '<div class="slide-to-unlock-progress">' +
                     '<div class="slide-to-unlock-stop"></div>' +
                     '</div>' +
                     '<div class="slide-to-unlock-handle"></div>';
-                $container.html(template);
+                $container.append(template);
             }
 
             function initStyle() {

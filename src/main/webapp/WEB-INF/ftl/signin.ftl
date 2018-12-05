@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>登录 - Genesis</title>
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/unlock.css" rel="stylesheet">
-    <script src="/js/jquery-3.2.1.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/js.cookie.js"></script>
-    <script src="/js/js.unlock.js"></script>
+    <link href="/mybbs/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/mybbs/css/unlock.css" rel="stylesheet">
+    <script src="/mybbs/js/jquery-3.2.1.js"></script>
+    <script src="/mybbs/js/bootstrap.min.js"></script>
+    <script src="/mybbs/js/js.cookie.js"></script>
+    <script src="/mybbs/js/unlock.js"></script>
+     <script src="/mybbs/js/js-red.js"></script>
     <style>
         li {list-style-type:none;}
         html, body {
@@ -68,6 +69,10 @@
         <div class="form-group">
             <label for="password">密码</label>
             <input type="password" class="form-control" id="passwd" name="password" placeholder="请输入密码" required="required">
+             
+        </div>
+        <div class="form-group" id="slider">
+            <input type="hidden" value="0" id="checkFlag"/>
         </div>
         <div class="checkbox text-left">
             <label>
@@ -75,13 +80,11 @@
             </label>
             <a style="margin-left: 30%" href="#">忘记密码?</a>
         </div>
-        <div class="form-group">
-            <div id="login"></div>
-        </div>
+     
 
         <p style="text-align: right;color: red;position: absolute" id="info"></p><br/>
-        <button id="loginButton" class="btn btn-success btn-block">登录</button>
-        <button id="SlideButton" class="btn btn-success btn-block">测试请求</button>
+        <button class="btn btn-success btn-block" onclick="loginButton()">登录</button>
+        
 
     </div>
 </div>
@@ -119,57 +122,82 @@
     }
     // 设置登录信息
     setLoginStatus();
-    $("#loginButton").click(function () {
-        var id =$("#username").val();
-        var passwd=$("#passwd").val();
-        var remember=$("#remember").prop('checked');
-        if( id=='' && passwd==''){
-            $("#info").text("提示:账号和密码不能为空");
-        }
-        else if ( id ==''){
-            $("#info").text("提示:账号不能为空");
-        }
-        else if( passwd ==''){
-            $("#info").text("提示:密码不能为空");
-        }
-        else {
-            $.ajax({
-                type: "POST",
-                url: "/user/api/loginCheck",
-                data: {
-                    username:id ,
-                    password: passwd
-                },
-                dataType: "json",
-                success: function(data) {
-                    if(data.stateCode.trim() == "0") {
-                        $("#info").text("提示:用户名不存在!");
-                    } else if(data.stateCode.trim() == "1") {
-                        $("#info").text("提示:密码错误!");
-                    } else if(data.stateCode.trim() == "2"){
-                        if(remember){
-                            rememberLogin(id,passwd,remember);
-                        }else {
-                            Cookies.remove('loginStatus');
-                        }
-                        $("#info").text("提示:登陆成功，跳转中...");
-                        window.location.href="/";
-                    }
-                }
-            });
-        }
-    })
+    function loginButton(){
+    	 var id =$("#username").val();
+         var passwd=$("#passwd").val();
+         var remember=$("#remember").prop('checked');
+         var checkFlag = $("#checkFlag").val();
+         if( id=='' && passwd==''){
+             $("#info").text("提示:账号和密码不能为空");
+         }
+         else if ( id ==''){
+             $("#info").text("提示:账号不能为空");
+         }
+         else if( passwd ==''){
+             $("#info").text("提示:密码不能为空");
+         }
+         if(checkFlag === "0"){
+         $("#slider").append("<label >滑动验证</label> ");
+         $("#slider").append(" <div class='form-group' id='slider-check'></div>");
+          slideValue();
+          return;
+         }
+             $.ajax({
+                 type: "POST",
+                 url: "/mybbs/user/api/loginCheck",
+                 data: {
+                     username:id ,
+                     password: passwd
+                 },
+                 dataType: "json",
+                 success: function(data) {
+                     if(data.stateCode.trim() == "0") {
+                         $("#info").text("提示:用户名不存在!");
+                     } else if(data.stateCode.trim() == "1") {
+                         $("#info").text("提示:密码错误!");
+                     } else if(data.stateCode.trim() == "2"){
+                         if(remember){
+                             rememberLogin(id,passwd,remember);
+                         }else {
+                             Cookies.remove('loginStatus');
+                         }
+                         $("#info").text("提示:登陆成功，跳转中...");
+                         window.location.href="/mybbs";
+                     }
+                 }
+             });
+    }
+  
 
-    $("#SlideButton").click(function(){
+    function slideValue(){
+    	$.get("/mybbs/slide",{name:'张三',age:16},function(obj){
 
-
-        $.get("/slide",{name:'张三',age:16},function(obj){
-
-            console.log(obj);
+            console.log(obj.result);
+            if(obj.result==="success"){
+            	let m = obj.max;
+            	let n = obj.min;
+            	console.log(m);
+            	$('#slider-check').slideToUnlock({
+            		height:38,
+            		width :240,
+            		progressColor:'#245580',
+            		test : '请执行滑动解锁',
+            		succColor : '#337ab7',
+            		succText: '正在验证',
+            		stopColor: '#6699FF',
+            		stopMarginLeft :m,
+            		stopMarginRight:n,
+            		successFunc: function() {
+                         console.log("解锁成功");
+                         $("#checkFlag").val(1);
+                         loginButton();
+                     }
+            	})
+            	
+            }
         });
+    }
 
-
-    })
 </script>
 <!-- 引入footer文件 -->
 <#include "footer.ftl">

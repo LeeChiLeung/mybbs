@@ -4,7 +4,7 @@
     <nav class="navbar navbar-default" role="navigation" style="background-color: white">
         <div class="container-fluid" style="margin-left: 10%">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/">首页</a>
+                <a class="navbar-brand" href="/mybbs">首页</a>
             </div>
             <div>
 
@@ -64,7 +64,7 @@
         var r=confirm("确定退出?")
         if (r==true)
         {
-            window.location.href="/signout";
+            window.location.href="/mybbs/signout";
         }
         else
         {
