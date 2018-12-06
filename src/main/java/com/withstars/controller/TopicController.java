@@ -81,7 +81,7 @@ public class TopicController {
      * @return
      */
     @RequestMapping("/t/{id}")
-    public ModelAndView toTopic(@PathVariable("id")Integer id,HttpSession session){
+    public String toTopic(@PathVariable("id")Integer id,HttpSession session,Model model){
         //点击量加一
         boolean ifSucc=topicService.clickAddOne(id);
         //获取主题信息
@@ -100,15 +100,16 @@ public class TopicController {
         List<Topic> hotestTopics=topicService.listMostCommentsTopics();
 
         //渲染视图
-        ModelAndView topicPage=new ModelAndView("detail");
-        topicPage.addObject("topic",topic);
-        topicPage.addObject("replies",replies);
-        topicPage.addObject("repliesNum",repliesNum);
-        topicPage.addObject("topicsNum",topicsNum);
-        topicPage.addObject("usersNum",usersNum);
-        topicPage.addObject("user",user);
-        topicPage.addObject("hotestTopics",hotestTopics);
-        return topicPage;
+        //ModelAndView topicPage=new ModelAndView("detailed");
+
+         model.addAttribute("topic",topic);
+         model.addAttribute("replies",replies);
+         model.addAttribute("repliesNum",repliesNum);
+         model.addAttribute("topicsNum",topicsNum);
+         model.addAttribute("usersNum",usersNum);
+         model.addAttribute("user",user);
+         model.addAttribute("hotestTopics",hotestTopics);
+        return "detailed";
     }
 
     /**

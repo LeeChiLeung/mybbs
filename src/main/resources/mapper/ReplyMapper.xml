@@ -13,7 +13,7 @@
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
     <association property="user" javaType="com.withstars.domain.User">
       <id column="id" property="id" jdbcType="INTEGER" />
-      <result column="username" property="username" jdbcType="VARCHAR" />
+      <result column="user_name" property="username" jdbcType="VARCHAR" />
       <result column="avatar" property="avatar" jdbcType="VARCHAR" />
     </association>
   </resultMap>
@@ -21,7 +21,7 @@
 
 
   <select id="getRepliesOfTopic" resultMap="replyAndUser" parameterType="java.lang.Integer" >
-  SELECT reply.*,user.username,user.avatar
+  SELECT reply.*,user.user_name,user.avatar
   from reply,user
   where reply.reply_user_id = user.id and reply.topic_id = #{topicId,jdbcType=INTEGER}
   order by create_time ASC ;

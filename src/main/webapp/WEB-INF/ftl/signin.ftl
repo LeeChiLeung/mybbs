@@ -136,12 +136,12 @@
          else if( passwd ==''){
              $("#info").text("提示:密码不能为空");
          }
-         if(checkFlag === "0"){
-         $("#slider").append("<label >滑动验证</label> ");
-         $("#slider").append(" <div class='form-group' id='slider-check'></div>");
-          slideValue();
-          return;
-         }
+//         if(checkFlag === "0"){
+//         $("#slider").append("<label >滑动验证</label> ");
+//         $("#slider").append(" <div class='form-group' id='slider-check'></div>");
+//          slideValue();
+//          return;
+//         }
              $.ajax({
                  type: "POST",
                  url: "/mybbs/user/api/loginCheck",
