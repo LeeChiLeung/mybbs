@@ -54,7 +54,7 @@
     <div class="info">
         <p style="text-align: center;font-size: 16px;">统计信息</p>
         <ul >
-            <li>会员数: ${usersNum!}</li>
+            <#--<li>会员数: ${usersNum!}</li>li-->
             <li>话题数: ${topicsNum!}</li>
         </ul>
     </div>
