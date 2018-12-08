@@ -6,6 +6,14 @@
     <link href="/mybbs/css/bootstrap.min.css" rel="stylesheet">
     <script src="/mybbs/js/jquery-3.2.1.js"></script>
     <script src="/mybbs/js/bootstrap.min.js"></script>
+    <script src="/mybbs/js/editor/lib/marked.min.js"></script>
+    <script src="/mybbs/js/editor/lib/prettify.min.js"></script>
+    <script src="/mybbs/js/editor/lib/raphael.min.js"></script>
+    <script src="/mybbs/js/editor/lib/underscore.min.js"></script>
+    <script src="/mybbs/js/editor/lib/sequence-diagram.min.js"></script>
+    <script src="/mybbs/js/editor/lib/flowchart.min.js"></script>
+    <script src="/mybbs/js/editor/lib/jquery.flowchart.min.js"></script>
+    <script src="/mybbs/js/editor/editormd.js"></script>
     <title>${topic.title!} - VBoxs </title>
 </head>
 <body>
@@ -31,11 +39,7 @@
             </div>
         </div>
 
-        <ul class="list-group" style="width: 100%">
-            <li class="list-group-item">
-            ${topic.content}
-            </li>
-        </ul>
+        <div id="markdownHtml"></div>
     </div>
 
   <#--div  <c:if test="${!empty replies}">-->
@@ -96,6 +100,25 @@
     <#--</c:if>-->
 
 </div>
+<script type="application/javascript">
+
+    $(function(){
+        console.log("页面加载完成");
+       mdToHtml("");
+    })
+
+    function mdToHtml(markdownTXT){
+        editormd.markdownToHTML("markdownHtml",{
+            markdown :markdownTXT,
+            htmlDecode : "style,script,iframe",
+            tocm :false,
+            emoji :false,
+            taskList :false,
+        });
+
+    }
+
+</script>
 <!-- 引入侧边栏文件 -->
 <#include "side.ftl">
 
