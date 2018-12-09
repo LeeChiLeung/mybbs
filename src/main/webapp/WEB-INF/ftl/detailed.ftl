@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <link href="/mybbs/css/bootstrap.min.css" rel="stylesheet">
+    <link  href="/mybbs/js/editor/lib/codemirror/codemirror.min.css" rel="stylesheet">
+    <link  href="/mybbs/js/editor/css/editormd.preview.css" rel="stylesheet">
+    <link  href="/mybbs/js/editor/css/editormd.css" rel="stylesheet">
+    <link  href="/mybbs/js/editor/css/editormd.logo.css" rel="stylesheet">
+    <link  href="/mybbs/js/editor/lib/codemirror/addon/dialog/dialog.css" rel="stylesheet">
     <script src="/mybbs/js/jquery-3.2.1.js"></script>
     <script src="/mybbs/js/bootstrap.min.js"></script>
     <script src="/mybbs/js/editor/lib/marked.min.js"></script>
@@ -98,13 +103,14 @@
             <#--</div>-->
         <#--</div>-->
     <#--</c:if>-->
-
+<input type="hidden" id="content-md" value="${topic.content!""}">
 </div>
 <script type="application/javascript">
 
     $(function(){
         console.log("页面加载完成");
-       mdToHtml("");
+        var content = $("#content-md").val();
+       mdToHtml(content);
     })
 
     function mdToHtml(markdownTXT){
@@ -113,7 +119,7 @@
             htmlDecode : "style,script,iframe",
             tocm :false,
             emoji :false,
-            taskList :false,
+            taskList :false
         });
 
     }

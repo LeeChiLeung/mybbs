@@ -3,6 +3,7 @@
         <div class="container-fluid" style="margin-left: 10%">
             <div class="navbar-header">
                 <a class="navbar-brand" href="/mybbs">VBoxs</a>
+                <span class="navbar-brand">一个分享创造的开发者社区 </span>
             </div>
             <div>
 
@@ -39,11 +40,11 @@
 
                 <#if user.id??>
                     <li>
-                        <p class="navbar-text"><a href="/member/${user.username!}">${user.username!}</a>
+                        <p class="navbar-text"><a href="/mybbs/user/member/${user.username!}">${user.username!}</a>
                         </p>
                     </li>
                     <li>
-                        <p class="navbar-text"><a href="/mybbs/settings">设置</a></p>
+                        <p class="navbar-text"><a href="/mybbs/user/settings">设置</a></p>
                     </li>
                     <li>
                         <p class="navbar-text"><a href="javascript:signout_confirm();">登出</a></p>
@@ -72,7 +73,7 @@
     function signout_confirm() {
         var r = confirm("确定退出?")
         if (r == true) {
-            window.location.href = "/mybbs/signout";
+            window.location.href = "/mybbs/user/signout";
         }
         else {
 

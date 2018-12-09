@@ -7,6 +7,9 @@
     <link  href="/mybbs/js/editor/css/editormd.css" rel="stylesheet">
     <link  href="/mybbs/js/editor/lib/codemirror/codemirror.min.css" rel="stylesheet">
     <link  href="/mybbs/js/editor/lib/codemirror/addon/dialog/dialog.css" rel="stylesheet">
+    <link  href="/mybbs/js/editor/css/editormd.preview.css" rel="stylesheet">
+    <link  href="/mybbs/js/editor/css/editormd.css" rel="stylesheet">
+    <link  href="/mybbs/js/editor/css/editormd.logo.css" rel="stylesheet">
     <script src="/mybbs/js/jquery-3.2.1.js"></script>
     <script src="/mybbs/js/bootstrap.min.js"></script>
     <script src="/mybbs/js/editor/lib/marked.min.js"></script>
@@ -28,7 +31,7 @@
 <div style="width: 70%;margin:1% 2% 1% 5%;float: left;">
     <div class="panel panel-default" id="main" style="">
         <div class="panel-heading" style="background-color: white">
-            <a href="/">VBoxs</a> › 创作新主题
+            <a href="/mybbs">VBoxs</a> › 创作新主题
         </div>
 
         <div class="panel-body" id="panel-body" style="height: 1165px;width: 1134px">
@@ -48,10 +51,14 @@
                     <label for="tab">板块</label><br/>
                     <div class="col-sm-10" style="width: 40%">
                         <select class="form-control" id="tab" name="tab">
-                            <option value="0">默认主题</option>
+
                             <#if tabs??>
                             <#list tabs as v>
+                                <#if v_index==0>
+                                    <option value="${v.id!}" selected>${v.tabName!}</option>
+                                <#else >
                                 <option value="${v.id!}">${v.tabName!}</option>
+                                </#if>
                             </#list>
                             </#if>
                         </select>
@@ -135,15 +142,15 @@
         }
     })
     $(function () {
-        var h=$("#panel-body");
-        var w=$("#panel-body").offsetWidth;
+
         console.log();
 
         editormd("content-md",{
             width:'1145px',
             height:'900px',
             syncScrolling:"single",
-            path:'./js/editor/lib/'
+            path:'./js/editor/lib/',
+            name:'content'
 
         });
     });
@@ -153,6 +160,12 @@
 
         var obj=$.getObject("#panel-body");
         console.log(obj);
+        $.post("/mybbs/topic/add",obj,function(data){
+            console.log(data);
+          if(data.msg=="success"){
+              window.location.href="/mybbs/";
+          }
+        })
     }
 </script>
 </body>

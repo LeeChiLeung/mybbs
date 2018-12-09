@@ -1,6 +1,7 @@
 package com.withstars.controller;
 
 import com.withstars.domain.Tab;
+import com.withstars.domain.User;
 import com.withstars.service.impl.ReplyServiceImpl;
 import com.withstars.service.impl.TabServiceImpl;
 import com.withstars.service.impl.TopicServiceImpl;
@@ -12,16 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.jws.WebParam;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -105,10 +103,14 @@ public class MainController {
      * 进入新建主题页面
      */
     @RequestMapping(value = {"/creative_articles"})
-    public String newTopic(Model model)
+    public String newTopic(HttpSession session, Model model)
     {
 
-
+        String username = (String)session.getAttribute("username");
+        if (username == null){
+            return "signin";
+        }
+        User user = userService.getUserByUsername(username);
         List<Tab> tabs=tabService.getAllTabs();
         //获取统计信息
         int topicsNum=topicService.getTopicsNum();
@@ -116,6 +118,7 @@ public class MainController {
         model.addAttribute("tabs",tabs);
         model.addAttribute("topicsNum",topicsNum);
         model.addAttribute("usersNum",usersNum);
+        model.addAttribute("user",user);
         return  "creative_articles";
     }
 
