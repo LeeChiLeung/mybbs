@@ -63,7 +63,7 @@
 <#include "header.ftl" />
 <div class="panel panel-default" id="main" style="width: 70%;margin:1% 2% 5% 15%;float: left;">
     <div class="panel-heading" style="background-color: white">
-        <a style="margin-right: 2%">活跃</a><a style="margin-right: 2%">精华</a><a style="margin-right: 2%">最近</a>
+       <!-- <a style="margin-right: 2%">活跃</a><a style="margin-right: 2%">精华</a><a style="margin-right: 2%">最近</a>-->
     </div>
 
     <ul class="list-group" style="width: 100%">
@@ -72,7 +72,7 @@
     <#list topics as va >
         <li class="list-group-item">
             <div style="height: 50px">
-                <div style="float: left;width: 6%;margin-bottom: 5px">
+                <div style="float: left;margin-bottom: 5px">
                     <img width="50px" height="50px" src="/mybbs${va.user.avatar!}" class="img-rounded">
                 </div>
                 <div style="width: 89%;float: left">

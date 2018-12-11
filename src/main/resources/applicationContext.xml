@@ -2,15 +2,23 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" 
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+     xsi:schemaLocation="http://www.springframework.org/schema/beans 
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd
-   http://www.springframework.org/schema/tx
-    http://www.springframework.org/schema/tx/spring-tx.xsd">
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="com.withstars.service"/>
+    <context:component-scan base-package="com.onchange.service" use-default-filters="true">
+    
+    </context:component-scan>
     <!-- 配置整合mybatis过程 -->
     <!-- 1.配置数据库相关参数properties的属性：${url} -->
     <context:property-placeholder location="classpath:jdbc.properties"/>
@@ -32,7 +40,7 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
     <!-- 4.配置基于注解的声明式事务 -->
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+   <!--  <tx:annotation-driven transaction-manager="transactionManager"/> -->
     <!-- 5.配置SqlSessionFactory对象 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!-- 注入数据库连接池 -->
@@ -40,7 +48,7 @@
         <!-- 配置MyBaties全局配置文件:mybatis-config.xml -->
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <!-- 扫描domain包 使用别名 -->
-        <property name="typeAliasesPackage" value="com.withstars.dao"/>
+        <property name="typeAliasesPackage" value="com.onchange.dao"/>
         <!-- 扫描sql配置文件:mapper需要的xml文件 -->
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
     </bean>
@@ -50,7 +58,7 @@
         <!-- 注入sqlSessionFactory -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <!-- 给出需要扫描Dao接口包 -->
-        <property name="basePackage" value="com.withstars.dao"/>
+        <property name="basePackage" value="com.onchange.dao"/>
     </bean>
 
     <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
@@ -78,5 +86,12 @@
         <property name="exposeSpringMacroHelpers" value="true"/>
         <property name="requestContextAttribute" value="request"/>
     </bean>
-
+<mvc:interceptors>
+ <!-- <bean name="contextInterceptor" class="com.onchange.intercepter.ContextInterceptor"/> -->
+ <!-- 拦截特定的 -->
+    <mvc:interceptor>
+       <mvc:mapping path="/**"/>
+        <bean class="com.onchange.intercepter.ContextInterceptor"/>
+    </mvc:interceptor> 
+</mvc:interceptors>
 </beans>
