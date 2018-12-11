@@ -27,8 +27,8 @@ public class CORSFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         response.addHeader("Access-Control-Allow-Origin", "*");
         response.addHeader("Access-Control-Allow-Methods", "GET,POST,PATCH,PUT,OPTIONS");
-        String requestUrl = request.getRequestURI();
-        logger.info(requestUrl);
+
+
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

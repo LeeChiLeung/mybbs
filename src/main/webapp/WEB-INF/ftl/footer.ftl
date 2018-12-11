@@ -54,14 +54,14 @@
     <div class="info">
         <p style="text-align: center;font-size: 16px;">统计信息</p>
         <ul >
-            <li>会员数: ${usersNum!}</li>
+            <#--<li>会员数: ${usersNum!}</li>li-->
             <li>话题数: ${topicsNum!}</li>
         </ul>
     </div>
     <div class="info">
         <p style="text-align: center;font-size: 16px;">友情链接</p>
         <ul >
-            <li><a href="https://github.com/" target="_blank">Github</a></li>
+            <li ><a href="https://github.com/" target="_blank">Github</a></li>
             <li><a href="https://segmentfault.com/" target="_blank">Segmentfault</a></li>
             <li><a href="https://www.v2ex.com/" target="_blank">v2ex</a></li>
         </ul>

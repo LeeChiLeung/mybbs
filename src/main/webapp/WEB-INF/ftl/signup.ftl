@@ -3,7 +3,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <title>注册 - MyBBS</title>
+
     <link href="/mybbs/css/bootstrap.min.css" rel="stylesheet">
     <script src="/mybbs/js/jquery-3.2.1.js"></script>
     <script src="/mybbs/js/bootstrap.min.js"></script>
