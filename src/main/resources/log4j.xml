@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<log4j:configuration>
+     <!-- 声明日志保存路径 -->
+    <!--  <properties>
+          <Property name="logPath">/opt/logs/mybbs</Property> 
+     </properties> -->
+     
+     <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+     <layout class="org.apache.log4j.PatternLayout">
+     <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} [%c] %p - %m%n"></param>
+     </layout>
+     </appender>
+     
+     
+     <appender name="logMain" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="/opt/logs/mybbs/main.log"/>
+       <param name="MaxFileSize" value="10240"/>
+        <param name="DatePattern" value=".yyyy-MM-dd" />
+         <layout class="org.apache.log4j.PatternLayout">
+     <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} [%c] %p - %m%n"></param>
+     </layout>
+     
+     </appender>
+     <root>
+     <level value="INFO"/>
+     <appender-ref ref="CONSOLE"/>
+     <appender-ref ref="logMain"/>
+     </root>
+ <!--     <appenders>
+            声明日志类型
+            <Console name="con" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%c] %p - %m%n"/>
+            </Console>
+            
+            <RollingRandomAccessFile name="main" immediateFlush="false" fileName="${logPath}/main.log" filePattern="${logPath}/main_%d{yyyy_MM_dd}_%i.log">
+               <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [%c] %p - %m%n"/>
+               <Policies>
+                   <CronTriggeringPolicy schedule="0 0 0 * * ?"/>
+                   <SizeBaseTriggeringPolicy size="5MB"/>
+               </Policies>
+            
+            </RollingRandomAccessFile>
+      </appenders> -->
+     
+     <!-- 配置日志输出包的范围 -->
+
+   <!--   <Loggers>
+     <AsyncLogger name="com.onchange" level="info" includeLocation="false">
+     </AsyncLogger>
+     <AsyncRoot level="info" includeLocation="false">
+     <AppenderRef ref="con"/>
+     <AppenderRef ref="main"/>
+     
+     </AsyncRoot>
+     
+     </Loggers> -->
+
+
+</log4j:configuration>
