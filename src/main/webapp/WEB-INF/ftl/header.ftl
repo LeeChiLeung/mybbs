@@ -40,24 +40,24 @@
 
                 <#if user.id??>
                     <li>
-                        <p class="navbar-text"><a href="/mybbs/user/member/${user.username!}">${user.username!}</a>
+                        <p class="navbar-text"><a href="${path!}/user/member/${user.username!}">${user.username!}</a>
                         </p>
                     </li>
                     <li>
-                        <p class="navbar-text"><a href="/mybbs/user/settings">设置</a></p>
+                        <p class="navbar-text"><a href="${path!}/user/settings">设置</a></p>
                     </li>
                     <li>
                         <p class="navbar-text"><a href="javascript:signout_confirm();">登出</a></p>
                     </li>
-                    <li><p class="navbar-text"><a href="/mybbs/creative_articles">创作新主题</a></p></li>
+                    <li><p class="navbar-text"><a href="${path!}/creative_articles">创作新主题</a></p></li>
                     <li><p class="navbar-text"><a href="">0条未读提醒</a></p></li>
                     <li><p class="navbar-text"><a href="">积分:${user.credit!}</a></p></li>
                     <#else >
                         <li>
-                            <p class="navbar-text"><a href="/mybbs/signin" class="btn btn-primary btn-block">登录</a></p>
+                            <p class="navbar-text"><a href="${path!}/signin" class="btn btn-primary btn-block">登录</a></p>
                         </li>
                         <li>
-                            <p class="navbar-text"> <a href="/mybbs/signup" class="btn btn-default btn-block">注册</a></p>
+                            <p class="navbar-text"> <a href="${path!}/signup" class="btn btn-default btn-block">注册</a></p>
                         </li>
                 </#if>
 
@@ -73,7 +73,7 @@
     function signout_confirm() {
         var r = confirm("确定退出?")
         if (r == true) {
-            window.location.href = "/mybbs/user/signout";
+            window.location.href = "${path!}/user/signout";
         }
         else {
 
