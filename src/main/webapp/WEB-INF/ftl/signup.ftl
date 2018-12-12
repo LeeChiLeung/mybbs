@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>注册 - MyBBS</title>
+    <title>注册 - VBoxs</title>
 
-    <link href="/mybbs/css/bootstrap.min.css" rel="stylesheet">
-    <script src="/mybbs/js/jquery-3.2.1.js"></script>
-    <script src="/mybbs/js/bootstrap.min.js"></script>
+    <link href="${path!}/css/bootstrap.min.css" rel="stylesheet">
+    <script src="${path!}/js/jquery-3.2.1.js"></script>
+    <script src="${path!}/js/bootstrap.min.js"></script>
     <style>
         li {list-style-type:none;}
         html, body {
@@ -61,7 +61,7 @@
         <h3 class="panel-title">注册</h3>
     </div>
     <div class="panel-body">
-        <form action="/mybbs/user/add/do" method="post" id="signupForm" class="form-horizontal" role="form" style="margin-left: 5%">
+        <form action="${path!}/user/add/do" method="post" id="signupForm" class="form-horizontal" role="form" style="margin-left: 5%">
             <div class="form-group" >
                 <label class="col-sm-2 control-label">用户名</label>
                 <div class="col-sm-10" style="width: 40%;">

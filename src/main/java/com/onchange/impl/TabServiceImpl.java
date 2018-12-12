@@ -1,4 +1,4 @@
-package com.onchange.service.impl;
+package com.onchange.impl;
 
 import com.onchange.dao.TabMapper;
 import com.onchange.domain.Tab;

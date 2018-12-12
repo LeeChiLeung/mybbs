@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:aop="http://www.springframework.org/schema/aop"
@@ -12,10 +11,16 @@
        http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd ">
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd 
+      " >
 
-    <context:component-scan base-package="com.onchange.controller"/>
-
+  <!--   <context:component-scan base-package="com.onchange.controller"/> -->
+<!-- 启用注解扫描，并定义组件查找规则 ，mvc层只负责扫描@Controller -->
+    <context:component-scan base-package="com.onchange.*" use-default-filters="false">
+      <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+       <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:include-filter type="annotation" expression="javax.annotation.Resource"/>
+    </context:component-scan>
     <aop:aspectj-autoproxy/>
     <aop:aspectj-autoproxy proxy-target-class="true"/>
     <context:component-scan base-package="com.onchange.aop" />
@@ -52,6 +57,16 @@
     <mvc:resources location="/static/js/" mapping="/js/**" />
     <mvc:resources location="/static/css/" mapping="/css/**" />
 
-
+ <mvc:interceptors>
+ <!-- <bean class="com.onchange.intercepter.ContextInterceptor"/>  -->
+ <!-- 拦截特定的 -->
+  <mvc:interceptor>
+       <mvc:mapping path="/**" />
+       <mvc:exclude-mapping path="/img/**" />
+       <mvc:exclude-mapping path="/js/**" />
+       <mvc:exclude-mapping path="/css/**" />
+        <bean class="com.onchange.intercepter.ContextInterceptor"/>
+    </mvc:interceptor> 
+</mvc:interceptors>   
 
 </beans>

@@ -3,9 +3,12 @@ package com.onchange.controller;
 import com.onchange.domain.LoginLog;
 import com.onchange.domain.Topic;
 import com.onchange.domain.User;
-import com.onchange.service.impl.LoginLogServiceImpl;
-import com.onchange.service.impl.TopicServiceImpl;
-import com.onchange.service.impl.UserServiceImpl;
+import com.onchange.impl.TabServiceImpl;
+import com.onchange.service.LoginLogService;
+import com.onchange.service.UserService;
+import com.onchange.impl.LoginLogServiceImpl;
+import com.onchange.impl.TopicServiceImpl;
+import com.onchange.impl.UserServiceImpl;
 import eu.bitwalker.useragentutils.UserAgent;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -28,13 +31,13 @@ import java.util.*;
 @RequestMapping("/user")
 public class UserController {
 
-	@Resource
-    public UserServiceImpl userService;
+	@Resource 
+    public UserService userService;
 
-	@Resource
-    public LoginLogServiceImpl loginLogService;
+	@Resource 
+    public LoginLogService loginLogService;
 
-	@Resource
+	@Resource 
     public TopicServiceImpl topicService;
 
 
@@ -142,7 +145,7 @@ public class UserController {
     public String signout(HttpSession session) {
         session.removeAttribute("userId");
         session.removeAttribute("username");
-        return "redirect:/";
+        return "redirect:/index";
     }
 
     /**

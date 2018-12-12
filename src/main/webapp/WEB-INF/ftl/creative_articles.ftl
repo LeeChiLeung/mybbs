@@ -1,27 +1,27 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
     <meta charset="UTF-8">
-    <link href="/mybbs/css/bootstrap.min.css" rel="stylesheet">
-    <link  href="/mybbs/js/editor/css/editormd.css" rel="stylesheet">
-    <link  href="/mybbs/js/editor/lib/codemirror/codemirror.min.css" rel="stylesheet">
-    <link  href="/mybbs/js/editor/lib/codemirror/addon/dialog/dialog.css" rel="stylesheet">
-    <link  href="/mybbs/js/editor/css/editormd.preview.css" rel="stylesheet">
-    <link  href="/mybbs/js/editor/css/editormd.css" rel="stylesheet">
-    <link  href="/mybbs/js/editor/css/editormd.logo.css" rel="stylesheet">
-    <script src="/mybbs/js/jquery-3.2.1.js"></script>
-    <script src="/mybbs/js/bootstrap.min.js"></script>
-    <script src="/mybbs/js/editor/lib/marked.min.js"></script>
-    <script src="/mybbs/js/editor/lib/prettify.min.js"></script>
-    <script src="/mybbs/js/editor/lib/raphael.min.js"></script>
-    <script src="/mybbs/js/editor/lib/underscore.min.js"></script>
-    <script src="/mybbs/js/editor/lib/sequence-diagram.min.js"></script>
-    <script src="/mybbs/js/editor/lib/flowchart.min.js"></script>
-    <script src="/mybbs/js/editor/lib/jquery.flowchart.min.js"></script>
-    <srcipt src="/mybbs/js/editor/lib/codemirror/codemirror.min.js"></srcipt>
-    <script src="/mybbs/js/editor/editormd.js"></script>
-    <script src="/mybbs/js/js.red.js"></script>
+    <link href=" ${path!}/css/bootstrap.min.css" rel="stylesheet">
+    <link  href="${path!}/js/editor/css/editormd.css" rel="stylesheet">
+    <link  href="${path!}/js/editor/lib/codemirror/codemirror.min.css" rel="stylesheet">
+    <link  href="${path!}/js/editor/lib/codemirror/addon/dialog/dialog.css" rel="stylesheet">
+    <link  href="${path!}/js/editor/css/editormd.preview.css" rel="stylesheet">
+    <link  href="${path!}/js/editor/css/editormd.css" rel="stylesheet">
+    <link  href="${path!}/js/editor/css/editormd.logo.css" rel="stylesheet">
+    <script src="${path!}/js/jquery-3.2.1.js"></script>
+    <script src="${path!}/js/bootstrap.min.js"></script>
+    <script src="${path!}/js/editor/lib/marked.min.js"></script>
+    <script src="${path!}/js/editor/lib/prettify.min.js"></script>
+    <script src="${path!}/js/editor/lib/raphael.min.js"></script>
+    <script src="${path!}/js/editor/lib/underscore.min.js"></script>
+    <script src="${path!}/js/editor/lib/sequence-diagram.min.js"></script>
+    <script src="${path!}/js/editor/lib/flowchart.min.js"></script>
+    <script src="${path!}/js/editor/lib/jquery.flowchart.min.js"></script>
+    <srcipt src="${path!}/js/editor/lib/codemirror/codemirror.min.js"></srcipt>
+    <script src="${path!}/js/editor/editormd.js"></script>
+    <script src="${path!}/js/js.red.js"></script>
     <title>创作新主题 › VBoxs </title>
 </head>
 <body>
@@ -31,11 +31,11 @@
 <div style="width: 70%;margin:1% 2% 1% 5%;float: left;">
     <div class="panel panel-default" id="main" style="">
         <div class="panel-heading" style="background-color: white">
-            <a href="/mybbs">VBoxs</a> › 创作新主题
+            <a href="${path!}/index">VBoxs</a> › 创作新主题
         </div>
 
         <div class="panel-body" id="panel-body" style="height: 1165px;width: 1134px">
-            <#--<form action="/topic/add" method="post" id="replyForm">-->
+    
 
                 <div class="form-group">
                     <label for="title">主题标题</label>
@@ -160,10 +160,10 @@
 
         var obj=$.getObject("#panel-body");
         console.log(obj);
-        $.post("/mybbs/topic/add",obj,function(data){
+        $.post("${path!}/topic/add",obj,function(data){
             console.log(data);
           if(data.msg=="success"){
-              window.location.href="/mybbs/";
+              window.location.href="${path!}/index";
           }
         })
     }

@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>登录 - Genesis</title>
-    <link href="/mybbs/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/mybbs/css/unlock.css" rel="stylesheet">
-    <script src="/mybbs/js/jquery-3.2.1.js"></script>
-    <script src="/mybbs/js/bootstrap.min.js"></script>
-    <script src="/mybbs/js/js.cookie.js"></script>
-    <script src="/mybbs/js/unlock.js"></script>
-     <script src="/mybbs/js/js-red.js"></script>
+    <link href="${path!}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${path!}/css/unlock.css" rel="stylesheet">
+    <script src="${path!}/js/jquery-3.2.1.js"></script>
+    <script src="${path!}/js/bootstrap.min.js"></script>
+    <script src="${path!}/js/js.cookie.js"></script>
+    <script src="${path!}/js/unlock.js"></script>
+     <script src="${path!}/js/js-red.js"></script>
     <style>
         li {list-style-type:none;}
         html, body {
@@ -144,7 +144,7 @@
 //         }
              $.ajax({
                  type: "POST",
-                 url: "/mybbs/user/api/loginCheck",
+                 url: "${path!}/user/api/loginCheck",
                  data: {
                      username:id ,
                      password: passwd
@@ -162,7 +162,7 @@
                              Cookies.remove('loginStatus');
                          }
                          $("#info").text("提示:登陆成功，跳转中...");
-                         window.location.href="/mybbs";
+                         window.location.href="${path!}";
                      }
                  }
              });
@@ -170,7 +170,7 @@
   
 
     function slideValue(){
-    	$.get("/mybbs/slide",{name:'张三',age:16},function(obj){
+    	$.get("${path!}/slide",{name:'张三',age:16},function(obj){
 
             console.log(obj.result);
             if(obj.result==="success"){

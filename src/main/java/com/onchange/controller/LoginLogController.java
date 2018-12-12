@@ -1,6 +1,6 @@
 package com.onchange.controller;
 
-import com.onchange.service.impl.LoginLogServiceImpl;
+import com.onchange.impl.LoginLogServiceImpl;
 
 import org.springframework.stereotype.Controller;
 import javax.annotation.Resource;
@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 @Controller
 public class LoginLogController {
 
-	@Resource
+	@Resource 
     public LoginLogServiceImpl loginLogService;
 
 

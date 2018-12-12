@@ -1,15 +1,12 @@
 package com.onchange.controller;
 
 import com.onchange.domain.Reply;
-import com.onchange.service.impl.ReplyServiceImpl;
-import com.onchange.service.impl.UserServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.onchange.impl.ReplyServiceImpl;
+import com.onchange.impl.UserServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,9 +18,9 @@ import java.util.Date;
 @Controller
 public class ReplyController {
 
-	@Resource
+	@Resource 
     public ReplyServiceImpl replyService;
-	@Resource
+	@Resource 
     public UserServiceImpl userService;
 
     /**

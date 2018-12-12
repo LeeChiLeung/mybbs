@@ -3,22 +3,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="/mybbs/css/bootstrap.min.css" rel="stylesheet">
-    <link  href="/mybbs/js/editor/lib/codemirror/codemirror.min.css" rel="stylesheet">
-    <link  href="/mybbs/js/editor/css/editormd.preview.css" rel="stylesheet">
-    <link  href="/mybbs/js/editor/css/editormd.css" rel="stylesheet">
-    <link  href="/mybbs/js/editor/css/editormd.logo.css" rel="stylesheet">
-    <link  href="/mybbs/js/editor/lib/codemirror/addon/dialog/dialog.css" rel="stylesheet">
-    <script src="/mybbs/js/jquery-3.2.1.js"></script>
-    <script src="/mybbs/js/bootstrap.min.js"></script>
-    <script src="/mybbs/js/editor/lib/marked.min.js"></script>
-    <script src="/mybbs/js/editor/lib/prettify.min.js"></script>
-    <script src="/mybbs/js/editor/lib/raphael.min.js"></script>
-    <script src="/mybbs/js/editor/lib/underscore.min.js"></script>
-    <script src="/mybbs/js/editor/lib/sequence-diagram.min.js"></script>
-    <script src="/mybbs/js/editor/lib/flowchart.min.js"></script>
-    <script src="/mybbs/js/editor/lib/jquery.flowchart.min.js"></script>
-    <script src="/mybbs/js/editor/editormd.js"></script>
+    <link href=" ${path!}/css/bootstrap.min.css" rel="stylesheet">
+    <link  href="${path!}/js/editor/lib/codemirror/codemirror.min.css" rel="stylesheet">
+    <link  href="${path!}/js/editor/css/editormd.preview.css" rel="stylesheet">
+    <link  href="${path!}/js/editor/css/editormd.css" rel="stylesheet">
+    <link  href="${path!}/js/editor/css/editormd.logo.css" rel="stylesheet">
+    <link  href="${path!}/js/editor/lib/codemirror/addon/dialog/dialog.css" rel="stylesheet">
+    <script src="${path!}/js/jquery-3.2.1.js"></script>
+    <script src="${path!}/js/bootstrap.min.js"></script>
+    <script src="${path!}/js/editor/lib/marked.min.js"></script>
+    <script src="${path!}/js/editor/lib/prettify.min.js"></script>
+    <script src="${path!}/js/editor/lib/raphael.min.js"></script>
+    <script src="${path!}/js/editor/lib/underscore.min.js"></script>
+    <script src="${path!}/js/editor/lib/sequence-diagram.min.js"></script>
+    <script src="${path!}/js/editor/lib/flowchart.min.js"></script>
+    <script src="${path!}/js/editor/lib/jquery.flowchart.min.js"></script>
+    <script src="${path!}/js/editor/editormd.js"></script>
     <title>${topic.title!} - VBoxs </title>
 </head>
 <body>
@@ -33,7 +33,7 @@
                 <#--</div>-->
                 <h3>${topic.title!}</h3><br/>
                 <div>
-                    <a href="/mybbs/member/${topic.user.username}"><span ><strong>${topic.user.username}</strong></span></a>&nbsp;&nbsp;
+                    <a href="${path!}/member/${topic.user.username}"><span ><strong>${topic.user.username}</strong></span></a>&nbsp;&nbsp;
                     <small class="text-muted">${topic.localCreateTime}&nbsp;&nbsp;&nbsp;+08:00</small>&nbsp;&nbsp;
                     <small class="text-muted">${topic.click}次点击</small>
                 </div>

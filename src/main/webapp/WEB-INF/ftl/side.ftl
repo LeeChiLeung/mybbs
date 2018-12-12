@@ -6,7 +6,7 @@
         <#--<a href="/member/${user.username!}">${user.username!}</a>-->
     <#--</div>-->
     <#--<ul class="list-group" style="width: 100%">-->
-        <#--<li class="list-group-item"><a href="/mybbs/creative_articles">创作新主题</a></li>-->
+        <#--<li class="list-group-item"><a href="${path!}/creative_articles">创作新主题</a></li>-->
         <#--<li class="list-group-item"><a href="">0条未读提醒</a></li>-->
         <#--<li class="list-group-item"><a href="">积分:${user.credit!}</a></li>-->
     <#--</ul>-->
@@ -23,8 +23,8 @@
     <#--</div>-->
     <#--<ul class="list-group" style="width: 100%">-->
         <#--<li class="list-group-item">-->
-            <#--<a href="/mybbs/signin" class="btn btn-primary btn-block">登录</a>-->
-            <#--<a href="/mybbs/signup" class="btn btn-default btn-block">注册</a>-->
+            <#--<a href="${path!}/signin" class="btn btn-primary btn-block">登录</a>-->
+            <#--<a href="${path!}/signup" class="btn btn-default btn-block">注册</a>-->
         <#--</li>-->
     <#--</ul>-->
 <#--</div>-->

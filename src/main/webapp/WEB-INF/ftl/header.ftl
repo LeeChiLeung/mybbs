@@ -2,7 +2,7 @@
     <nav class="navbar navbar-default" role="navigation" style="background-color: white">
         <div class="container-fluid" style="margin-left: 10%">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/mybbs">VBoxs</a>
+                <a class="navbar-brand" href="${path!}/index">VBoxs</a>
                 <span class="navbar-brand">一个分享创造的开发者社区 </span>
             </div>
             <div>

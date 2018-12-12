@@ -2,14 +2,13 @@ package com.onchange.controller;
 
 import com.onchange.domain.Tab;
 import com.onchange.domain.User;
-import com.onchange.service.impl.ReplyServiceImpl;
-import com.onchange.service.impl.TabServiceImpl;
-import com.onchange.service.impl.TopicServiceImpl;
-import com.onchange.service.impl.UserServiceImpl;
+import com.onchange.impl.ReplyServiceImpl;
+import com.onchange.impl.TabServiceImpl;
+import com.onchange.impl.TopicServiceImpl;
+import com.onchange.impl.UserServiceImpl;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,13 +32,13 @@ public class MainController {
 
 	private static Logger logger = LoggerFactory.getLogger(MainController.class);
 	
-	@Resource
+	@Resource 
     public TopicServiceImpl topicService;
-	@Resource
+	@Resource 
     public ReplyServiceImpl replyService;
-	@Resource
+	@Resource 
     public UserServiceImpl userService;
-	@Resource
+	@Resource 
     public TabServiceImpl tabService;
 
     /**
@@ -85,7 +84,7 @@ public class MainController {
             data = URLDecoder.decode(data, "UTF-8");
             logger.info(data);
         }
-        Map requestMap = request.getParameterMap();
+    
         String name = request.getParameter("name");
         
         String string=IOUtils.toString(requestDate,"UTF-8");

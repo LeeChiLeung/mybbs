@@ -1,4 +1,4 @@
-package com.onchange.service.impl;
+package com.onchange.impl;
 
 import com.onchange.dao.LoginLogMapper;
 import com.onchange.domain.LoginLog;

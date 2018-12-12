@@ -3,9 +3,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="/mybbs/css/bootstrap.min.css" rel="stylesheet">
-    <script src="/mybbs/js/jquery-3.2.1.js"></script>
-    <script src="/mybbs/js/bootstrap.min.js"></script>
+    <link href="${path!}/css/bootstrap.min.css" rel="stylesheet">
+    <script src="${path!}/js/jquery-3.2.1.js"></script>
+    <script src="${path!}/js/bootstrap.min.js"></script>
     <title>V.Box.s ›设置</title>
 </head>
 <body>
@@ -15,15 +15,15 @@
 <div style="width: 70%;margin:1% 2% 1% 5%;float: left;">
     <div class="panel panel-default" id="main" style="">
         <div class="panel-heading" style="background-color: white">
-            <a href="/mybbs">V.Box.s</a> › 设置
+            <a href="${path!}">V.Box.s</a> › 设置
         </div>
 
         <div class="panel-body">
 
             <form class="form-horizontal" role="form" >
                 <div style="margin-left: 17%">
-                    <img width="60px" height="60px" src="/mybbs${user.avatar!}" class="img-rounded">
-                    <a class="btn btn-default" href="/mybbs/user/settings/avatar" role="button">更换头像</a>
+                    <img width="60px" height="60px" src="${path!}${user.avatar!}" class="img-rounded">
+                    <a class="btn btn-default" href="${path!}/user/settings/avatar" role="button">更换头像</a>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">uid</label>

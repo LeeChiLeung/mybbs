@@ -3,9 +3,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="/mybbs/css/bootstrap.min.css" rel="stylesheet">
-    <script src="/mybbs/js/jquery-3.2.1.js"></script>
-    <script src="/mybbs/js/bootstrap.min.js"></script>
+    <link href="${path!}/css/bootstrap.min.css" rel="stylesheet">
+    <script src="${path!}/js/jquery-3.2.1.js"></script>
+    <script src="${path!}/js/bootstrap.min.js"></script>
     <title>VBoxs ›
 
     <#if userInfo??>
@@ -24,7 +24,7 @@
 <div style="width: 70%;margin:1% 2% 1% 5%;float: left;">
     <div class="panel panel-default" id="main" style="">
         <div class="panel-heading" style="background-color: white">
-            <a href="/mybbs">VBoxs</a> › ${userInfo.username!}
+            <a href="${path!}">VBoxs</a> › ${userInfo.username!}
         </div>
 
         <div class="panel-body">
@@ -32,7 +32,7 @@
                 <#if userInfo??>
                 <form class="form-horizontal" role="form">
                     <div style="margin-left: 17%">
-                        <img width="60px" height="60px" src="/mybbs${userInfo.avatar!}" class="img-rounded">
+                        <img width="60px" height="60px" src="${path!}${userInfo.avatar!}" class="img-rounded">
                     </div><br/>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">uid</label>

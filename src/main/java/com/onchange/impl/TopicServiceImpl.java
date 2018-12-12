@@ -1,10 +1,9 @@
-package com.onchange.service.impl;
+package com.onchange.impl;
 
 import com.onchange.dao.TopicMapper;
 import com.onchange.domain.Topic;
 import com.onchange.service.TopicService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +13,7 @@ import javax.annotation.Resource;
 @Service
 public class TopicServiceImpl implements TopicService {
 
-	@Resource
+	@Resource 
     public TopicMapper topicDao;
 
     //获取全部主题

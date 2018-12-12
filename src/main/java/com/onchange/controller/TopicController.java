@@ -4,17 +4,17 @@ import com.onchange.domain.Reply;
 import com.onchange.domain.Tab;
 import com.onchange.domain.Topic;
 import com.onchange.domain.User;
-import com.onchange.service.impl.ReplyServiceImpl;
-import com.onchange.service.impl.TabServiceImpl;
-import com.onchange.service.impl.TopicServiceImpl;
-import com.onchange.service.impl.UserServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.onchange.impl.ReplyServiceImpl;
+import com.onchange.impl.TabServiceImpl;
+import com.onchange.impl.TopicServiceImpl;
+import com.onchange.impl.UserServiceImpl;
+import com.onchange.intercepter.ContextInterceptor;
+
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -27,37 +27,43 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+
+
+
 /**
  * 主题相关控制类
  */
 @Controller
 public class TopicController {
 
-	@Resource
+	@Resource 
     public TopicServiceImpl topicService;
-	@Resource
+	@Resource 
     public ReplyServiceImpl replyService;
-	@Resource
+	@Resource 
     public UserServiceImpl userService;
-	@Resource
+	@Resource 
     public TabServiceImpl tabService;
 
     //log4j对象
-    private final Log log = LogFactory.getLog(getClass());
+     private final Log log = LogFactory.getLog(getClass());
+
+
+
+
 
     /**
      * 渲染首页
      * @param session
      * @return
      */
-    @RequestMapping("/")
+    @RequestMapping("/index")
     public String toMain(HttpSession session, Model model){
+       
+        //logger.info("访问成功2244");
 
         //全部主题
         List<Topic> topics=topicService.listTopicsAndUsers();
-
-
-
         //获取统计信息
         int topicsNum=topicService.getTopicsNum();
         int usersNum=userService.getUserCount();
@@ -179,9 +185,9 @@ public class TopicController {
         boolean ifSucc=topicService.addTopic(topic);
         boolean ifSuccAddCredit=userService.addCredit(1,userId);
         if (ifSucc){
-            if (log.isInfoEnabled()){
-                log.info("添加主题成功!");
-            }
+//            if (log.isInfoEnabled()){
+//                log.info("添加主题成功!");
+//            }
         }
 
         Map<String,Object> resultMap = new HashMap<String,Object>();

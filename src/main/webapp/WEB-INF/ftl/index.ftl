@@ -4,11 +4,11 @@
     <meta name="Content-Type" content="text/html;charset=utf-8">
     <meta name="keywords" content="Genesis,论坛,社区,程序员">
     <title>VBoxs - 一个分享创造的开发者社区 </title>
-    <link href="/mybbs/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${path!}/css/bootstrap.min.css" rel="stylesheet">
 
 
-    <script src="/mybbs/js/jquery-3.2.1.js"></script>
-    <script src="/mybbs/js/bootstrap.min.js"></script>
+    <script src="${path!}/js/jquery-3.2.1.js"></script>
+    <script src="${path!}/js/bootstrap.min.js"></script>
 
     <style>
         li {
@@ -73,13 +73,13 @@
         <li class="list-group-item">
             <div style="height: 50px">
                 <div style="float: left;margin-bottom: 5px">
-                    <img width="50px" height="50px" src="/mybbs${va.user.avatar!}" class="img-rounded">
+                    <img width="50px" height="50px" src="${path!}${va.user.avatar!}" class="img-rounded">
                 </div>
                 <div style="width: 89%;float: left">
-                    <a href="/mybbs/t/${va.id!}">${va.title!}</a><br/>
+                    <a href="${path!}/t/${va.id!}">${va.title!}</a><br/>
                     <div>
                         <a><span class="label label-default">${va.tab.tabName!}</span></a>&nbsp;&nbsp;&nbsp;
-                        <a href="/mybbs/member/${va.user.username!}"><span><strong>${va.user.username!}</strong></span></a>&nbsp;&nbsp;&nbsp;
+                        <a href="${path!}/member/${va.user.username!}"><span><strong>${va.user.username!}</strong></span></a>&nbsp;&nbsp;&nbsp;
                         <small class="text-muted">${va.localCreateTime!}</small>
                     </div>
                 </div>
