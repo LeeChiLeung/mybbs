@@ -1,5 +1,6 @@
 package com.onchange.service;
 
+import com.github.pagehelper.PageInfo;
 import com.onchange.domain.Topic;
 
 import java.util.List;
@@ -48,5 +49,6 @@ public interface TopicService {
      */
     int getTopicsNum();
 
+    PageInfo<Topic> listTopicsAndUser();
 
 }

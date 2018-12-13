@@ -75,18 +75,18 @@
     select topic.id,topic.user_id,topic.create_time,topic.update_time,topic.title,topic.click,topic.tab_id,user.user_name,user.avatar ,
     tab.tab_name,count(reply.id) as count_replies from topic LEFT JOIN user on  topic.user_id = user.id
 	LEFT JOIN tab on tab.id=topic.tab_id LEFT JOIN reply on topic.id=reply.topic_id
-	group by topic.id order by topic.id desc ;
+	group by topic.id order by topic.id desc
   </select>
 
   <select id="listTopicsAndUsersOfTab" parameterType="java.lang.Integer" resultMap="topicAndUserInfo" >
    select topic.id,topic.user_id,topic.create_time,topic.update_time,topic.title,topic.click,topic.tab_id,user.user_name,user.avatar ,
     tab.tab_name,count(reply.id) as count_replies from topic LEFT JOIN user on  topic.user_id = user.id
 	LEFT JOIN tab on tab.id=topic.tab_id  LEFT JOIN reply on topic.id=reply.topic_id where tab.id = #{id,jdbcType=INTEGER}
-	group by topic.id order by topic.id desc ;
+	group by topic.id order by topic.id desc 
   </select>
 
   <select id="selectById" parameterType="java.lang.Integer" resultMap="topicAndUserDetail">
-      SELECT topic.*,user.user_name,user.avatar from topic,user where topic.user_id = user.id and topic.id = #{id,jdbcType=INTEGER};
+      SELECT topic.*,user.user_name,user.avatar from topic,user where topic.user_id = user.id and topic.id = #{id,jdbcType=INTEGER}
   </select>
 
 
@@ -105,7 +105,7 @@
   </select>
 
   <select id="listMostCommentsTopics" resultMap="mostCommentsTopic">
-    SELECT topic.id,topic.title,count(reply.id) as count_replies  from topic ,reply  where topic.id = reply.topic_id group by topic.id order by count_replies desc limit 5;
+    SELECT topic.id,topic.title,count(reply.id) as count_replies  from topic ,reply  where topic.id = reply.topic_id group by topic.id order by count_replies desc 
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >

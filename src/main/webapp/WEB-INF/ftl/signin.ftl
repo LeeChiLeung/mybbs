@@ -162,7 +162,7 @@
                              Cookies.remove('loginStatus');
                          }
                          $("#info").text("提示:登陆成功，跳转中...");
-                         window.location.href="${path!}";
+                         window.location.href="${path!}/index";
                      }
                  }
              });

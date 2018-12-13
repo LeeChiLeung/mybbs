@@ -1,5 +1,6 @@
 package com.onchange.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.onchange.dao.TopicMapper;
 import com.onchange.domain.Topic;
 import com.onchange.service.TopicService;
@@ -44,10 +45,23 @@ public class TopicServiceImpl implements TopicService {
     }
 
     public List<Topic> listTopicsAndUsers() {
-        return topicDao.listTopicsAndUsers();
+    	try {
+    	    return topicDao.listTopicsAndUsers();
+    	}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+    
     }
 
     public List<Topic> listTopicsAndUsersOfTab(Integer tabId) {
         return topicDao.listTopicsAndUsersOfTab(tabId);
     }
+
+	public PageInfo<Topic> listTopicsAndUser() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+    
+    
 }

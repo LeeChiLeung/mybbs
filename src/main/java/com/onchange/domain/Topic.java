@@ -122,12 +122,12 @@ public class Topic extends BaseDomain {
         this.content = content == null ? null : content.trim();
     }
 
-    public String getLocalCreateTime() {
+    private String getLocalCreateTime() {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-M-dd HH:mm:ss");//设置日期格式
         String date = df.format(this.createTime);
         return date;
     }
-    public String getLocalUpdateTime() {
+    private String getLocalUpdateTime() {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-M-dd HH:mm:ss");//设置日期格式
         String date = df.format(updateTime);
         return date;

@@ -12,20 +12,44 @@
        http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd 
-      " >
-
-  <!--   <context:component-scan base-package="com.onchange.controller"/> -->
-<!-- 启用注解扫描，并定义组件查找规则 ，mvc层只负责扫描@Controller -->
-    <context:component-scan base-package="com.onchange.*" use-default-filters="false">
+      ">
+     <context:component-scan base-package="com.onchange.*" use-default-filters="false">
       <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
         <context:include-filter type="annotation" expression="javax.annotation.Resource"/>
     </context:component-scan>
+  <!--   <context:component-scan base-package="com.onchange.controller"/> -->
+<!-- 启用注解扫描，并定义组件查找规则 ，mvc层只负责扫描@Controller -->
+ 
     <aop:aspectj-autoproxy/>
     <aop:aspectj-autoproxy proxy-target-class="true"/>
     <context:component-scan base-package="com.onchange.aop" />
 
+<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/ftl/"/>
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">10</prop>
+                <prop key="locale">zh_CN</prop>
+                <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+                <prop key="date_format">yyyy-MM-dd</prop>
+                <prop key="number_format">#.##</prop>
+                <prop key="classic_compatible">true</prop>
+                <prop key="template_exception_handler">ignore</prop>
+            </props>
+        </property>
+    </bean>
 
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"></property>
+        <property name="suffix" value=".ftl"/>
+        <property name="contentType" value="text/html;charset=utf-8"/>
+        <property name="exposeRequestAttributes" value="true"/>
+        <property name="exposeSessionAttributes" value="true"/>
+        <property name="exposeSpringMacroHelpers" value="true"/>
+        <property name="requestContextAttribute" value="request"/>
+    </bean>
     <!--<bean-->
             <!--class="org.springframework.web.servlet.view.InternalResourceViewResolver"-->
             <!--p:viewClass="org.springframework.web.servlet.view.JstlView"-->

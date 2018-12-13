@@ -22,7 +22,7 @@
     <srcipt src="${path!}/js/editor/lib/codemirror/codemirror.min.js"></srcipt>
     <script src="${path!}/js/editor/editormd.js"></script>
     <script src="${path!}/js/js.red.js"></script>
-    <title>创作新主题 › VBoxs </title>
+    <title>创作新主题 › V.Box.s </title>
 </head>
 <body>
 <!-- 引入header文件 -->

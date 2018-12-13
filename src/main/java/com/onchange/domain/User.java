@@ -1,14 +1,18 @@
 package com.onchange.domain;
 
-import java.io.Serializable;
-import java.text.SimpleDateFormat;
+
 import java.util.Date;
 
 /**
  * 用户信息实体类
  */
 public class User extends BaseDomain{
-    private Integer id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
 
     private String username;
 
@@ -109,14 +113,5 @@ public class User extends BaseDomain{
         this.type = type;
     }
 
-    public String getLocalCreateTime() {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-M-dd HH:mm");//设置日期格式
-        String date = df.format(this.createTime);
-        return date;
-    }
-    public String getLocalUpdateTime() {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-M-dd HH:mm");//设置日期格式
-        String date = df.format(updateTime);
-        return date;
-    }
+
 }

@@ -9,7 +9,34 @@
 
     <script src="${path!}/js/jquery-3.2.1.js"></script>
     <script src="${path!}/js/bootstrap.min.js"></script>
-
+    <script type="text/javascript">
+    $(function(){
+    	
+     var scrollFlag = 1;
+     $("#boxScroll").on("scroll",function(){
+    	 let $container=$(this);
+    	 let containerHeight = $container.height();
+    	 let scrollHeight = $container[0].scrollHeight;
+    	 let scrollTop = $container[0].scrollTop;
+    	 let scrollHeightCount = containerHeight+scrollTop;
+    	 let flag = scrollHeightCount+100 >= scrollHeight;
+    	 
+    	 console.log(containerHeight+scrollTop);
+    	 if(flag&& scrollFlag===1){
+    		 console.log("到达了底部");
+    		 scrollFlag = 0;
+    	 }
+     })
+     
+    	
+    	
+    	
+    	
+    })
+    
+    
+    
+    </script>
     <style>
         li {
             list-style-type: none;
@@ -61,12 +88,13 @@
 <!-- 引入header文件 -->
 
 <#include "header.ftl" />
-<div class="panel panel-default" id="main" style="width: 70%;margin:1% 2% 5% 15%;float: left;">
-    <div class="panel-heading" style="background-color: white">
-       <!-- <a style="margin-right: 2%">活跃</a><a style="margin-right: 2%">精华</a><a style="margin-right: 2%">最近</a>-->
-    </div>
-
+<div style="height:100%;width:100%;">
+<div class="panel panel-default" id="main" style="width:70%;height:80%;margin:1% 2% 1% 15%;float: left;">
+    
+<div style="width:100%;height:100%;overflow-x: hidden;overflow-y:scroll;" >
+<div style="width:140%;height:100%;overflow-x:hidden;"id="boxScroll">
     <ul class="list-group" style="width: 100%">
+
 
 
     <#list topics as va >
@@ -83,9 +111,7 @@
                         <small class="text-muted">${va.localCreateTime!}</small>
                     </div>
                 </div>
-            <#--<div style="width: 5%;float: right;text-align: center">-->
-            <#--<span class="badge">${va.countReplies!}</span>-->
-            <#--</div>-->
+          
             </div>
         </li>
 
@@ -94,13 +120,16 @@
 
 
     </ul>
-
+    </div>
 </div>
 
-<!-- 引入侧边栏文件 -->
-<#include "side.ftl">
+</div>
+<#include "footer.ftl">
+</div>
+
 
 <!-- 引入footer文件 -->
-<#include "footer.ftl">
+
+
 </body>
 </html>
