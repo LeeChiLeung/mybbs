@@ -24,6 +24,7 @@
 <body>
 <!-- 引入header文件 -->
 <#include "header.ftl">
+<img src="https://source.unsplash.com/collection/954550/1920x1080"/>
 <div style="width: 70%;margin:1% 2% 1% 15%;float: left;">
     <div class="panel panel-default" id="main" style="">
         <div class="panel-heading" style="background-color: white">

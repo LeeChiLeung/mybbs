@@ -88,7 +88,8 @@
 <!-- 引入header文件 -->
 
 <#include "header.ftl" />
-<div style="height:100%;width:100%;">
+
+<div style="height:100%;width:100%;background-image: url('https://source.unsplash.com/collection/954550/1920x1080')">
 <div class="panel panel-default" id="main" style="width:70%;height:80%;margin:1% 2% 1% 15%;float: left;">
     
 <div style="width:100%;height:100%;overflow-x: hidden;overflow-y:scroll;" >

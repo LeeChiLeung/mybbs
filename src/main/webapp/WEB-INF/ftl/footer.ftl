@@ -14,8 +14,8 @@
         }
         .footer {
             background-color: #fff;
-            margin-top: 22px;
-            margin-bottom: 22px;
+            margin-top: 0px;
+            margin-bottom: 0px;
             width: 100%;
             padding-top: 22px;
             color: #8A8A8A;
@@ -52,23 +52,26 @@
         <p>Designed by </span> lee </p>
     </div>
     <div class="info">
-        <p style="text-align: center;font-size: 16px;">统计信息</p>
+
         <ul >
             <#--<li>会员数: ${usersNum!}</li>li-->
+                <li> <p>统计信息</p></li>
             <li>话题数: ${topicsNum!}</li>
         </ul>
     </div>
     <div class="info">
-        <p style="text-align: center;font-size: 16px;">友情链接</p>
+
         <ul >
+            <li><p >友情链接</p></li>
             <li ><a href="https://github.com/" target="_blank">Github</a></li>
             <li><a href="https://segmentfault.com/" target="_blank">Segmentfault</a></li>
             <li><a href="https://www.v2ex.com/" target="_blank">v2ex</a></li>
         </ul>
     </div>
     <div class="info" >
-        <p style="text-align: center;font-size: 16px;">其他信息</p>
+
         <ul >
+            <li> <p >其他信息</p></li>
             <li><a href="/">关于本站</a></li>
             <li><a href="/">联系我们</a></li>
         </ul>

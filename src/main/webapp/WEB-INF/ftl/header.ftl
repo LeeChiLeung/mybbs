@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-default" role="navigation" style="background-color: white">
+    <nav class="navbar navbar-default" role="navigation" style="background-color: white;margin-bottom: 0px;">
         <div class="container-fluid" style="margin-left: 10%">
             <div class="navbar-header">
                 <a class="navbar-brand" href="${path!}/index">VBoxs</a>
