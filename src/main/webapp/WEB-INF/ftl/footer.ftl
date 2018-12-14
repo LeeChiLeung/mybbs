@@ -16,7 +16,7 @@
             background-color: #fff;
             margin-top: 0px;
             margin-bottom: 0px;
-            width: 100%;
+            width: 101%;
             padding-top: 22px;
             color: #8A8A8A;
             display: block;

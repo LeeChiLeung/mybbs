@@ -1,41 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta name="Content-Type" content="text/html;charset=utf-8">
     <meta name="keywords" content="Genesis,论坛,社区,程序员">
     <title>VBoxs - 一个分享创造的开发者社区 </title>
     <link href="${path!}/css/bootstrap.min.css" rel="stylesheet">
-
-
     <script src="${path!}/js/jquery-3.2.1.js"></script>
     <script src="${path!}/js/bootstrap.min.js"></script>
+    <script src="${path!}/js/js.red.js"></script>
     <script type="text/javascript">
-    $(function(){
-    	
-     var scrollFlag = 1;
-     $("#boxScroll").on("scroll",function(){
-    	 let $container=$(this);
-    	 let containerHeight = $container.height();
-    	 let scrollHeight = $container[0].scrollHeight;
-    	 let scrollTop = $container[0].scrollTop;
-    	 let scrollHeightCount = containerHeight+scrollTop;
-    	 let flag = scrollHeightCount+100 >= scrollHeight;
-    	 
-    	 console.log(containerHeight+scrollTop);
-    	 if(flag&& scrollFlag===1){
-    		 console.log("到达了底部");
-    		 scrollFlag = 0;
-    	 }
-     })
-     
-    	
-    	
-    	
-    	
-    })
-    
-    
-    
+        $(function () {
+
+            var scrollFlag = 1;
+            var startRow = 0;
+            $("#boxScroll").on("scroll", function () {
+                let $container = $(this);
+                let containerHeight = $container.height();
+                let scrollHeight = $container[0].scrollHeight;
+                let scrollTop = $container[0].scrollTop;
+                let scrollHeightCount = containerHeight + scrollTop;
+                let flag = scrollHeightCount >= scrollHeight;
+
+                console.log(containerHeight + scrollTop);
+                if (flag && scrollFlag === 1) {
+                    console.log("到达了底部");
+                    scrollFlag = 0;
+                    startRow += 16;
+                    $.get("${path}/index/" + startRow, function (obj) {
+                        if (obj.length == 0) {
+                            scrollFlag = 0;
+                        } else {
+                            scrollFlag = 1;
+                            startRow += 15;
+                            let html = "";
+                            for (let i = 0; i < obj.length; i++) {
+                                console.log(obj[i]);
+                                let index = obj[i];
+                                html += " <tr class=\"list-group-item\">" +
+                                        "        <th style=\"width: 100%;border-top: 0px;\">" +
+                                        "            <div style=\"height: 100%;width: 100%;\">" +
+                                        "                <div style=\"float: left;margin-bottom: 5px\">" +
+                                        "                    <img width=\"50px\" height=\"50px\" src=\"${path!}" + index.user.avatar + "\" class=\"img-rounded\"/>" +
+                                        "                    <span class=\"label label-default\">" + index.tab.tabName + "</span>" +
+                                        "                    <span> <a href=\"${path!}/t/" + index.id + "\">" + index.title + "</a></span><br/>" +
+                                        "                    <small class=\"text-muted\">" + $.dateFmt("yyyy-MM-dd HH:mm:ss ", index.updateTime) + "</small>" +
+                                        "                </div>" +
+                                        "                </div>" +
+                                        "            </th>" +
+                                        "        </tr>";
+
+
+                            }
+                            $(".table").append(html);
+
+                        }
+
+
+                    })
+
+
+                }
+            })
+
+
+        })
+
+
     </script>
     <style>
         li {
@@ -88,43 +118,30 @@
 <!-- 引入header文件 -->
 
 <#include "header.ftl" />
-
-<div style="height:100%;width:100%;background-image: url('https://source.unsplash.com/collection/954550/1920x1080')">
-<div class="panel panel-default" id="main" style="width:70%;height:80%;margin:1% 2% 1% 15%;float: left;">
-    
-<div style="width:100%;height:100%;overflow-x: hidden;overflow-y:scroll;" >
-<div style="width:140%;height:100%;overflow-x:hidden;"id="boxScroll">
-    <ul class="list-group" style="width: 100%">
-
-
-
-    <#list topics as va >
-        <li class="list-group-item">
-            <div style="height: 50px">
-                <div style="float: left;margin-bottom: 5px">
-                    <img width="50px" height="50px" src="${path!}${va.user.avatar!}" class="img-rounded">
-                </div>
-                <div style="width: 89%;float: left">
-                    <a href="${path!}/t/${va.id!}">${va.title!}</a><br/>
-                    <div>
-                        <a><span class="label label-default">${va.tab.tabName!}</span></a>&nbsp;&nbsp;&nbsp;
-                        <a href="${path!}/member/${va.user.username!}"><span><strong>${va.user.username!}</strong></span></a>&nbsp;&nbsp;&nbsp;
-                        <small class="text-muted">${va.localCreateTime!}</small>
-                    </div>
-                </div>
-          
-            </div>
-        </li>
+<!-- background-image: url('https://source.unsplash.com/collection/954550/1920x1080') -->
+<div style="height:100%;width:100%;margin-top: 88px;">
+    <div style="height:100%;width:100%;">
+        <div style="height:96%;width:101%;overflow-y:auto; " id="boxScroll">
+            <table class="table">
+   <#list topics as va >
+       <tr class="list-group-item">
+           <th style="width: 100%;border-top: 0px;">
+               <div style="height: 100%;width: 100%;">
+                   <div style="float: left;margin-bottom: 5px">
+                       <img width="50px" height="50px" src="${path!}${va.user.avatar!}" class="img-rounded"/>
+                       <span class="label label-default">${va.tab.tabName!}</span>
+                       <span> <a href="${path!}/t/${va.id!}">${va.title!}</a></span><br/>
+                       <small class="text-muted">${(va.updateTime?string('yyyy-MM-dd HH:mm:ss'))!}</small>
+                   </div>
+               </div>
+           </th>
+       </tr>
 
 
-    </#list>
-
-
-    </ul>
+   </#list>
+            </table>
+        </div>
     </div>
-</div>
-
-</div>
 <#include "footer.ftl">
 </div>
 

@@ -1,5 +1,6 @@
 package com.onchange.controller;
 
+import com.github.pagehelper.PageHelper;
 import com.onchange.domain.Reply;
 import com.onchange.domain.Tab;
 import com.onchange.domain.Topic;
@@ -63,6 +64,7 @@ public class TopicController {
         //logger.info("访问成功2244");
 
         //全部主题
+    	 PageHelper.offsetPage(1, 15);
         List<Topic> topics=topicService.listTopicsAndUsers();
         //获取统计信息
         int topicsNum=topicService.getTopicsNum();
@@ -71,6 +73,7 @@ public class TopicController {
         Integer uid=(Integer) session.getAttribute("userId");
         User user=userService.getUserById(uid);
         //最热主题
+       
         List<Topic> hotestTopics=topicService.listMostCommentsTopics();
 
         model.addAttribute("topics",topics);
@@ -80,7 +83,21 @@ public class TopicController {
         model.addAttribute("user",user);
         return  "index";
     }
-
+    
+    @RequestMapping("/index/{num}")
+    @ResponseBody
+    public Object topicsList(@PathVariable("num") Integer num) {
+    	if(num == null) {
+    		return null;
+    	}
+    	PageHelper.offsetPage(num, 15);
+    	List<Topic> topics=topicService.listTopicsAndUsers();
+    	
+    	return topics;
+    }
+    
+    
+    
     /**
      * 渲染主题详细页面
      * @param id
