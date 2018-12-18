@@ -5,7 +5,7 @@
     width: 100%;
     z-index: 2;">
     <nav class="navbar navbar-default" role="navigation"
-         style="background-image:url('/mybbs/img/icon/bgIMG2.png');background-size:100% 100%;margin-bottom: 0px;">
+         style="background-image:url('/mybbs/img/icon/bgIMG1.png');background-size:100% 100%;margin-bottom: 0px;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <h2><a href="/mybbs/index"><p class="text-danger">VBoxs</p></a></h2>

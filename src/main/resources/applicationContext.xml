@@ -45,10 +45,6 @@
         <property name="typeAliasesPackage" value="com.onchange.dao"/>
         <!-- 扫描sql配置文件:mapper需要的xml文件 -->
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
-       
-        
-     
-        
     </bean>
 
     <!-- 4.配置扫描Dao接口包，动态实现Dao接口，注入到spring容器中 -->
@@ -59,6 +55,11 @@
         <property name="basePackage" value="com.onchange.dao"/>
     </bean>
 
-    
+    <bean id="ftpUtils" class="com.onchange.util.FtpUtils">
+       <property name="ftpPath" value="14.29.231.137"/>
+       <property name="port" value="8021"/>
+       <property name="ftpLoginName" value="onchange"/>
+       <property name="ftpPassword" value="onchange123"/>
+    </bean>
 
 </beans>

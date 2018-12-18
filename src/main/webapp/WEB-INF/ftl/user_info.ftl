@@ -32,7 +32,7 @@
                 <#if userInfo??>
                 <form class="form-horizontal" role="form">
                     <div style="margin-left: 17%">
-                        <img width="60px" height="60px" src="${path!}${userInfo.avatar!}" class="img-rounded">
+                        <img width="60px" height="60px" src="${imgUrl!}${userInfo.avatar!}" class="img-rounded">
                     </div><br/>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">uid</label>

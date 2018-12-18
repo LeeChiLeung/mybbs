@@ -20,47 +20,54 @@ public class FtpTest {
 	
 	private String password="onchange123";
 	
-	private FTPClient ftpClient;
+	//private FTPClient ftpClient;
 	
 	//初始化ftp
-	public void initFtpClinet() {
-		this.ftpClient= new FTPClient();
+	public FTPClient initFtpClinet() {
+		FTPClient	ftpClient= new FTPClient();
 		ftpClient.setControlEncoding("utf-8");
 		
 		try {
 			ftpClient.connect(host, port);//链接ftp
 			ftpClient.login(name, password);//登录ftp
 			int code = ftpClient.getReplyCode();
-			
+			System.out.println(code);
 			if(!FTPReply.isPositiveCompletion(code)) {
 				System.out.println("登录失败");
+				return null;
 			}else {
 				System.out.println("登录成功");
+return ftpClient;
 			}
 		}catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
+		return ftpClient;
 	}
 	//上传文件
-	public boolean uploadFile(String name,String fileName,String originFileName) {
+	public boolean uploadFile(String pathName,String fileName,String originFileName) {
 		boolean flag = false;
 		InputStream inputStream = null;
 		System.out.println("开始上传文件");
 		
+		FTPClient ftpClient= null;
 		try {
 			File file = new File(fileName);
-			if(!file.exists()) {
-				System.out.println("上传失败");
-				return false;
-			}
+//			if(!file.exists()) {
+//				System.out.println("上传失败");
+//				return false;
+//			}
 			inputStream = new FileInputStream(file);
-			initFtpClinet();
+			ftpClient=initFtpClinet();
+			ftpClient.enterLocalPassiveMode();
+			ftpClient.setControlEncoding("UTF-8");
 			ftpClient.setFileType(ftpClient.BINARY_FILE_TYPE);
 			//可选创建目录
 			//ftpClient.makeDirectory(name);
-			//ftpClient.changeWorkingDirectory(name);
-			ftpClient.storeFile(fileName, inputStream);
+			//ftpClient.changeWorkingDirectory(pathName);
+			boolean tmpStore = ftpClient.storeFile(originFileName, inputStream);
+			System.out.println(tmpStore);
 			inputStream.close();
 			ftpClient.logout();
 			flag=true;
@@ -97,6 +104,9 @@ public class FtpTest {
 	
 	@Test
 	public void testFtp() {
-		uploadFile(null,"1.png","/img/avatar/avatar-default-1.png");
+		String classpath = this.getClass().getResource("/").getPath();
+		System.out.println(classpath);
+		uploadFile("/www/imgs","/Users/lee/Documents/gitCode/mybbs/target/mybbs/static/img/avatar/avatar-default-1.png","xxxxcccc.png");
+		
 	}
 }

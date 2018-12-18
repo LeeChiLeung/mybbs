@@ -47,7 +47,9 @@
 <body>
 <footer class="footer">
     <div class="container">
-        我们的目标是高品质的开发者社区，致力于为开发者提供一个分享创造、结识伙伴、协同互助的平台。
+        我们的目标是高品质的开发者社区，<br>
+        致力于为开发者提供一个分享创造，<br>
+        结识伙伴、协同互助的平台。
         <br/><br/><br/>
         <p>Designed by </span> lee </p>
     </div>

@@ -64,7 +64,7 @@ public class TopicController {
         //logger.info("访问成功2244");
 
         //全部主题
-    	 PageHelper.offsetPage(1, 15);
+    	 PageHelper.offsetPage(0, 15);
         List<Topic> topics=topicService.listTopicsAndUsers();
         //获取统计信息
         int topicsNum=topicService.getTopicsNum();

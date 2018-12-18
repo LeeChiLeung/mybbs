@@ -1,5 +1,7 @@
 package com.onchange.intercepter;
 
+import java.util.Random;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,6 +25,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
  */
 public class ContextInterceptor extends HandlerInterceptorAdapter {
 	
+	private String bgImgIndex[] ={"1","2","3","4","5","6"};
     
     private final Log logger = LogFactory.getLog(getClass());
     /**
@@ -33,9 +36,13 @@ public class ContextInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		
+		Random random = new Random();
+		int index = random.nextInt(6);
+		String imgIndex = bgImgIndex[index];
 		//設置上下文路徑
 		request.setAttribute("path", "/mybbs");
+		request.setAttribute("imgUrl", "http://14.29.231.137:8089/");
+		request.setAttribute("imgIndex", imgIndex);
 		request.setAttribute("endType", ".jsp");
 		
 		String path = request.getServletPath();

@@ -22,7 +22,7 @@
 
             <form  action="${path!}/user/settings/avatar/update" enctype="multipart/form-data" method="post" class="form-horizontal" role="form">
                 <div style="margin-left: 17%">
-                    <img width="60px" height="60px" src="${path!}${user.avatar}" class="img-rounded">
+                    <img width="60px" height="60px" src="${imgUrl!}${user.avatar}" class="img-rounded">
                     <input type="file"  name="avatar" accept="image/png,image/jpeg,image/jpg" >
                     <br/>
                     <input class="btn btn-default" type="submit" value="上传头像">

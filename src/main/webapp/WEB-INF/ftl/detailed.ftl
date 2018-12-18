@@ -41,7 +41,7 @@
             </div>
 
             <div style="float: right;margin-top: -100px" >
-                <img width="50px" height="50px" src="${path!}${topic.user.avatar}" class="img-rounded">
+                <img width="50px" height="50px" src="${imgUrl!}${topic.user.avatar}" class="img-rounded">
             </div>
         </div>
 

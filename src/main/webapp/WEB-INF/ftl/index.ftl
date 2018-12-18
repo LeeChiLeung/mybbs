@@ -40,7 +40,7 @@
                                         "        <th style=\"width: 100%;border-top: 0px;\">" +
                                         "            <div style=\"height: 100%;width: 100%;\">" +
                                         "                <div style=\"float: left;margin-bottom: 5px\">" +
-                                        "                    <img width=\"50px\" height=\"50px\" src=\"${path!}" + index.user.avatar + "\" class=\"img-rounded\"/>" +
+                                        "                    <img width=\"50px\" height=\"50px\" src=\"${imgUrl!}" + index.user.avatar + "\" class=\"img-rounded\"/>" +
                                         "                    <span class=\"label label-default\">" + index.tab.tabName + "</span>" +
                                         "                    <span> <a href=\"${path!}/t/" + index.id + "\">" + index.title + "</a></span><br/>" +
                                         "                    <small class=\"text-muted\">" + $.dateFmt("yyyy-MM-dd HH:mm:ss ", index.updateTime) + "</small>" +
@@ -128,7 +128,7 @@
            <th style="width: 100%;border-top: 0px;">
                <div style="height: 100%;width: 100%;">
                    <div style="float: left;margin-bottom: 5px">
-                       <img width="50px" height="50px" src="${path!}${va.user.avatar!}" class="img-rounded"/>
+                       <img width="50px" height="50px" src="${imgUrl!}${va.user.avatar!}" class="img-rounded"/>
                        <span class="label label-default">${va.tab.tabName!}</span>
                        <span> <a href="${path!}/t/${va.id!}">${va.title!}</a></span><br/>
                        <small class="text-muted">${(va.updateTime?string('yyyy-MM-dd HH:mm:ss'))!}</small>

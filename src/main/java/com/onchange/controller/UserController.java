@@ -6,6 +6,9 @@ import com.onchange.domain.User;
 import com.onchange.impl.TabServiceImpl;
 import com.onchange.service.LoginLogService;
 import com.onchange.service.UserService;
+import com.onchange.util.FtpUtils;
+import com.onchange.util.RandomUtil;
+import com.onchange.util.RandomUtil.RandomType;
 import com.onchange.impl.LoginLogServiceImpl;
 import com.onchange.impl.TopicServiceImpl;
 import com.onchange.impl.UserServiceImpl;
@@ -22,6 +25,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -40,6 +46,8 @@ public class UserController {
 	@Resource 
     public TopicServiceImpl topicService;
 
+	@Resource
+	private FtpUtils ftpUtils;
 
     @RequestMapping("/test")
     public String testFtl(HttpServletRequest request, Model model) {
@@ -103,7 +111,7 @@ public class UserController {
 
         HashMap<String, String> res = new HashMap<String, String>();
 
-        //登录成功
+        //登录成功 https://github.com/toopay/bootstrap-markdown
         if (loginVerify == 2) {
             User user = userService.getUserByUsername(username);
             Integer userId = user.getId();
@@ -226,28 +234,44 @@ public class UserController {
     @RequestMapping(value = "/settings/avatar/update", method = RequestMethod.POST)
     public String updateAvatarDo(@RequestPart("avatar") MultipartFile avatarFile, HttpSession session,HttpServletRequest request) {
         Integer uid = (Integer) session.getAttribute("userId");
-
-        String fileName = avatarFile.getOriginalFilename();
-        String suffix = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length());
-        Long date = new Date().getTime();
-        String newFileName = date + "-" + uid + "." + suffix;
-        String absolutePath = "/Users/home/lee/code/gitCode/mybbs/src/main/webapp/static/img/avatar" + "/" + newFileName;
-        String str = this.getClass().getResource("/").getPath().replaceFirst("/", "");
-        System.out.println(str);
-        String relativePath = "/img/avatar" + "/" + newFileName;
-        User newUser = new User();
-        newUser.setAvatar(relativePath);
-        newUser.setId(uid);
-        File file = new File(absolutePath);
-
-        if (!file.exists()) {
-            try {
-                avatarFile.transferTo(file);
+        try {
+            InputStream imgFile = avatarFile.getInputStream();
+            //获取文件上传到服务器
+            String fileName = avatarFile.getOriginalFilename();
+            String suffix = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length());
+            LocalDate time = LocalDate.now();
+            String originFileName = time.getYear()+"-"+time.getMonthValue()+"-"+time.getDayOfMonth()+"-"+RandomUtil.rand(RandomType.UPPER_LOWER_CASE_NUMBER, 20)+"."+suffix;
+            Boolean imgUploadResult = ftpUtils.uploadFile(imgFile, originFileName);
+            if(imgUploadResult) {
+                User newUser = new User();
+                newUser.setAvatar(originFileName);
+                newUser.setId(uid);
                 userService.updateUser(newUser);
-            } catch (Exception e) {
-                e.printStackTrace();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+//        String fileName = avatarFile.getOriginalFilename();
+//        String suffix = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length());
+//        Long date = new Date().getTime();
+//        String newFileName = date + "-" + uid + "." + suffix;
+//        String absolutePath = "/Users/home/lee/code/gitCode/mybbs/src/main/webapp/static/img/avatar" + "/" + newFileName;
+//        String str = this.getClass().getResource("/").getPath().replaceFirst("/", "");
+//        System.out.println(str);
+//        String relativePath = "/img/avatar" + "/" + newFileName;
+//        User newUser = new User();
+//        newUser.setAvatar(relativePath);
+//        newUser.setId(uid);
+//        File file = new File(absolutePath);
+//
+//        if (!file.exists()) {
+//            try {
+//                avatarFile.transferTo(file);
+//                userService.updateUser(newUser);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
 
         return "redirect:/user/settings";
     }
