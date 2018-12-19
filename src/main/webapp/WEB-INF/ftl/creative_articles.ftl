@@ -4,15 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <link href=" ${path!}/css/bootstrap.min.css" rel="stylesheet">
-    <link  href="${path!}/js/editor/css/editormd.css" rel="stylesheet">
+<!--     <link  href="${path!}/js/editor/css/editormd.css" rel="stylesheet">
     <link  href="${path!}/js/editor/lib/codemirror/codemirror.min.css" rel="stylesheet">
     <link  href="${path!}/js/editor/lib/codemirror/addon/dialog/dialog.css" rel="stylesheet">
     <link  href="${path!}/js/editor/css/editormd.preview.css" rel="stylesheet">
     <link  href="${path!}/js/editor/css/editormd.css" rel="stylesheet">
-    <link  href="${path!}/js/editor/css/editormd.logo.css" rel="stylesheet">
+    <link  href="${path!}/js/editor/css/editormd.logo.css" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="${path!}/css/bootstrap-markdown.min.css">
+      <link rel="stylesheet" type="text/css" href="${path!}/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="${path!}/css/font-awesome/css/font-awesome.min.css">
+   
     <script src="${path!}/js/jquery-3.2.1.js"></script>
     <script src="${path!}/js/bootstrap.min.js"></script>
-    <script src="${path!}/js/editor/lib/marked.min.js"></script>
+    <script src="${path!}/js/markdown.js"></script>
+    <script src="${path!}/js/to-markdown.js"></script>
+    <script src="${path!}/js/bootstrap-markdown.js"></script>
+    <script src="${path!}/js/bootstrap-markdown.fr.js"></script>
+<!--     <script src="${path!}/js/editor/lib/marked.min.js"></script>
     <script src="${path!}/js/editor/lib/prettify.min.js"></script>
     <script src="${path!}/js/editor/lib/raphael.min.js"></script>
     <script src="${path!}/js/editor/lib/underscore.min.js"></script>
@@ -20,7 +28,7 @@
     <script src="${path!}/js/editor/lib/flowchart.min.js"></script>
     <script src="${path!}/js/editor/lib/jquery.flowchart.min.js"></script>
     <srcipt src="${path!}/js/editor/lib/codemirror/codemirror.min.js"></srcipt>
-    <script src="${path!}/js/editor/editormd.js"></script>
+    <script src="${path!}/js/editor/editormd.js"></script> -->
     <script src="${path!}/js/js.red.js"></script>
     <title>创作新主题 › V.Box.s </title>
 </head>
@@ -44,7 +52,8 @@
                 <div class="form-group">
                     <label for="content">正文</label>
                     <#--<textarea class="form-control" rows="10" ></textarea>-->
-                    <div class="form-control" id="content-md" name="content"></div>
+                    <!-- <div class="form-control" id="content-md" name="content"></div> -->
+                    <textarea name="content" data-provide="markdown" data-iconlibrary="fa" rows="10" id="editor"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -124,7 +133,7 @@
 <!-- 引入footer文件 -->
 <#include "footer.ftl" >
 
-<script>
+<script type="text/javascript">
     function submitValidate(flag){
         return flag;
     }
@@ -141,9 +150,9 @@
             }
         }
     })
-    $(function () {
+/*     $(function () {
 
-        console.log();
+       
 
         editormd("content-md",{
             width:'1145px',
@@ -153,8 +162,41 @@
             name:'content'
 
         });
-    });
+    }); */
+//初始化markdown
 
+    
+    (function($){
+    	$.fn.markdown.message.zh = {
+    			'Bold': "粗体",
+    	        'Italic': "斜体",
+    	        'Heading': "标题",
+    	        'URL/Link': "链接",
+    	        'Image': "图片",
+    	        'List': "列表",
+    	        'Unordered List': "无序列表",
+    	        'Ordered List': "有序列表",
+    	        'Code': "代码",
+    	        'Quote': "引用",
+    	        'Preview': "预览",
+    	        'strong text': "粗体",
+    	        'emphasized text': "强调",
+    	        'heading text': "标题",
+    	        'enter link description here': "输入链接说明",
+    	        'Insert Hyperlink': "URL地址",
+    	        'enter image description here': "输入图片说明",
+    	        'Insert Image Hyperlink': "图片URL地址",
+    	        'enter image title here': "在这里输入图片标题",
+    	        'list text here': "这里是列表文本",
+    	        'code text here': "这里输入代码",
+    	        'quote here': "这里输入引用文本"
+    	}
+    }(jQuery));
+    
+$("#editor").markdown({
+    autofocus: true,
+    language: 'zh',
+})
     function submitFrom(){
 
 
@@ -169,4 +211,4 @@
     }
 </script>
 </body>
-</html>
+</html> 
