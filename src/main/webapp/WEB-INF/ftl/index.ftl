@@ -119,7 +119,7 @@
 
 <#include "header.ftl" />
 <!-- background-image: url('https://source.unsplash.com/collection/954550/1920x1080') -->
-<div style="height:100%;width:100%;margin-top: 88px;">
+<div style="height:100%;width:70%;margin: auto;margin-top: 80px;">
     <div style="height:100%;width:100%;">
         <div style="height:96%;width:101%;overflow-y:auto; " id="boxScroll">
             <table class="table">
@@ -131,7 +131,7 @@
                        <img width="50px" height="50px" src="${imgUrl!}${va.user.avatar!}" class="img-rounded"/>
                        <span class="label label-default">${va.tab.tabName!}</span>
                        <span> <a href="${path!}/t/${va.id!}">${va.title!}</a></span><br/>
-                       <small class="text-muted">${(va.updateTime?string('yyyy-MM-dd HH:mm:ss'))!}</small>
+                       <small class="text-muted">发布时间:  ${(va.updateTime?string('yyyy-MM-dd HH:mm:ss'))!}</small>
                    </div>
                </div>
            </th>
