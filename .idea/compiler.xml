@@ -9,5 +9,8 @@
         <module name="mybbs" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mybbs" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>

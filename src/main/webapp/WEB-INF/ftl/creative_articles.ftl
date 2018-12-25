@@ -1,22 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <link href=" ${path!}/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="${path!}/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" type="text/css" href="${path!}/css/bootstrap-markdown.min.css">
-    <link rel="stylesheet" type="text/css" href="${path!}/css/font-awesome/css/font-awesome.min.css">
-    <script src="${path!}/js/jquery-3.2.1.js"></script>
-    <script src="${path!}/js/bootstrap.min.js"></script>
-    <script src="${path!}/js/markdown.js"></script>
-    <script src="${path!}/js/to-markdown.js"></script>
-    <script src="${path!}/js/bootstrap-markdown.js"></script>
-    <script src="${path!}/js/bootstrap-markdown.fr.js"></script>
-    <script src="${path!}/js/bootstrap-markdown.zh.js"></script>
-    <script src="${path!}/js/js.red.js"></script>
-    <title>创作新主题 › V.Box.s </title>
-</head>
 <body>
+<link rel="stylesheet" type="text/css" href="${path!}/css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="${path!}/css/bootstrap-markdown.min.css">
+<link rel="stylesheet" type="text/css" href="${path!}/css/font-awesome/css/font-awesome.min.css">
+<script src="${path!}/js/jquery-3.2.1.js"></script>
+<script src="${path!}/js/bootstrap.min.js"></script>
+<script src="${path!}/js/markdown.js"></script>
+<script src="${path!}/js/to-markdown.js"></script>
+<script src="${path!}/js/bootstrap-markdown.js"></script>
+<script src="${path!}/js/bootstrap-markdown.fr.js"></script>
+<script src="${path!}/js/bootstrap-markdown.zh.js"></script>
 <!-- 引入header文件 -->
 <#include "header.ftl">
 <div style="height:80%;">

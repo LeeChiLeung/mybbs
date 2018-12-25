@@ -1,30 +1,23 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href=" ${path!}/css/bootstrap.min.css" rel="stylesheet">
-    <link  href="${path!}/js/editor/lib/codemirror/codemirror.min.css" rel="stylesheet">
-    <link  href="${path!}/js/editor/css/editormd.preview.css" rel="stylesheet">
-    <link  href="${path!}/js/editor/css/editormd.css" rel="stylesheet">
-    <link  href="${path!}/js/editor/css/editormd.logo.css" rel="stylesheet">
-    <link  href="${path!}/js/editor/lib/codemirror/addon/dialog/dialog.css" rel="stylesheet">
-    <script src="${path!}/js/jquery-3.2.1.js"></script>
-    <script src="${path!}/js/bootstrap.min.js"></script>
-    <script src="${path!}/js/editor/lib/marked.min.js"></script>
-    <script src="${path!}/js/editor/lib/prettify.min.js"></script>
-    <script src="${path!}/js/editor/lib/raphael.min.js"></script>
-    <script src="${path!}/js/editor/lib/underscore.min.js"></script>
-    <script src="${path!}/js/editor/lib/sequence-diagram.min.js"></script>
-    <script src="${path!}/js/editor/lib/flowchart.min.js"></script>
-    <script src="${path!}/js/editor/lib/jquery.flowchart.min.js"></script>
-    <script src="${path!}/js/editor/editormd.js"></script>
-    <title>${topic.title!} - VBoxs </title>
-</head>
 <body>
+<link  href="${path!}/js/editor/lib/codemirror/codemirror.min.css" rel="stylesheet">
+<link  href="${path!}/js/editor/css/editormd.preview.css" rel="stylesheet">
+<link  href="${path!}/js/editor/css/editormd.css" rel="stylesheet">
+<link  href="${path!}/js/editor/css/editormd.logo.css" rel="stylesheet">
+<link  href="${path!}/js/editor/lib/codemirror/addon/dialog/dialog.css" rel="stylesheet">
+<script src="${path!}/js/jquery-3.2.1.js"></script>
+<script src="${path!}/js/bootstrap.min.js"></script>
+<script src="${path!}/js/editor/lib/marked.min.js"></script>
+<script src="${path!}/js/editor/lib/prettify.min.js"></script>
+<script src="${path!}/js/editor/lib/raphael.min.js"></script>
+<script src="${path!}/js/editor/lib/underscore.min.js"></script>
+<script src="${path!}/js/editor/lib/sequence-diagram.min.js"></script>
+<script src="${path!}/js/editor/lib/flowchart.min.js"></script>
+<script src="${path!}/js/editor/lib/jquery.flowchart.min.js"></script>
+<script src="${path!}/js/editor/editormd.js"></script>
 <!-- 引入header文件 -->
 <#include "header.ftl">
 <!-- <img src="https://source.unsplash.com/collection/954550/1920x1080"/> -->
+
 <div style="
     width: 80%;
     margin: auto;
@@ -45,7 +38,7 @@
         
         <div><div id="markdownHtml" style="
     /* margin-right: 0px; */
-    margin-left: 430px;
+    margin-left: 350px;
      margin-right: 213px;
     width: auto;
 "></div></div>

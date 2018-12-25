@@ -1,22 +1,23 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="${path!}/css/bootstrap.min.css" rel="stylesheet">
-    <script src="${path!}/js/jquery-3.2.1.js"></script>
-    <script src="${path!}/js/bootstrap.min.js"></script>
-    <title>VBoxs ›
+<#--<!DOCTYPE html>-->
+<#--<html lang="en">-->
+<#--<head>-->
+    <#--<meta charset="UTF-8">-->
+    <#--<link href="${path!}/css/bootstrap.min.css" rel="stylesheet">-->
+    <#--<script src="${path!}/js/jquery-3.2.1.js"></script>-->
+    <#--<script src="${path!}/js/bootstrap.min.js"></script>-->
+    <#--<title>VBoxs ›-->
 
-    <#if userInfo??>
-    ${userInfo.username!}
-    <#elseif errorInfo??>
-        会员未找到
-    </#if>
+    <#--<#if userInfo??>-->
+    <#--${userInfo.username!}-->
+    <#--<#elseif errorInfo??>-->
+        <#--会员未找到-->
+    <#--</#if>-->
 
 
-    </title>
-</head>
+    <#--</title>-->
+<#--</head>-->
+<#--<body>-->
 <body>
 <!-- 引入header文件 -->
 <#include "header.ftl">
