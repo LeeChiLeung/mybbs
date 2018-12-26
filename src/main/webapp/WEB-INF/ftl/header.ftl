@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="Content-Type" content="text/html;charset=utf-8">
+    <meta name="keywords" content="Genesis,论坛,社区,程序员">
+    <title>VBoxs - 一个分享创造的开发者博客 </title>
+    <link href="${path!}/css/bootstrap.min.css" rel="stylesheet">
+    <script src="${path!}/js/jquery-3.2.1.js"></script>
+    <script src="${path!}/js/bootstrap.min.js"></script>
+    <script src="${path!}/js/js.red.js"></script>
+
+</head>
+
 <header style="
     position: fixed;
     top: 0;
@@ -10,8 +23,10 @@
 	<div class="navbar-header">
 	
 		<a href="/mybbs/index" class="navbar-brand" ><p class="text-danger" style="
-    margin-left: 275px;
-font-size: 30px;">VBoxs</p></a>
+    /* margin-left: 130px; */
+    font-size: 40px;
+    margin-top: 8px;
+    ">VBoxs</p></a>
 	</div>
 	  <#if user.id??>
 	<div>

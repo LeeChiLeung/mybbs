@@ -1,13 +1,3 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="${path!}/css/bootstrap.min.css" rel="stylesheet">
-    <script src="${path!}/js/jquery-3.2.1.js"></script>
-    <script src="${path!}/js/bootstrap.min.js"></script>
-    <title>Genesis ›头像上传</title>
-</head>
 <body>
 <!-- 引入header文件 -->
 <#include "header.ftl">

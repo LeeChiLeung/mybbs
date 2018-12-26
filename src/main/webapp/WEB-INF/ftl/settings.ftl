@@ -1,13 +1,3 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="${path!}/css/bootstrap.min.css" rel="stylesheet">
-    <script src="${path!}/js/jquery-3.2.1.js"></script>
-    <script src="${path!}/js/bootstrap.min.js"></script>
-    <title>V.Box.s ›设置</title>
-</head>
 <body>
 <!-- 引入header文件 -->
 <#include "header.ftl">
